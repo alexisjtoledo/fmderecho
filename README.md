@@ -1,3 +1,7 @@
-# fmderecho
+# FMDERECHO APP - REACT NATIVE
 
-Aplicación de Franja Morada Derecho Córdoba realizada con React y Material UI.
+### Under Development!
+
+Aplicación realizada para la agrupación Franja Morada Derecho Córdoba. Conducción del Centro de Estudiantes de la Facultad de Derecho de la Universidad Nacional de Córdoba.
+
+Release: April 10th.
