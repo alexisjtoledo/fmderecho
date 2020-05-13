@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { 
     View, 
     FlatList, 
-    StyleSheet,
     Linking,
     Alert
 } from 'react-native'
@@ -89,43 +88,30 @@ export default function DependenciesScreen({ navigation }) {
                 backButton={true} 
             />
 
-            {/* CONTENIDO */}
-            <View style={GlobalStyles.container}>
+            {/* CUADRO DE BÚSQUEDA */}
+            <SearchInput
+                data={inMemoryElements}
+                getData={getDataFromChild}
+                label='Bucar por dependencia'
+            />
 
-                {/* CUADRO DE BÚSQUEDA */}
-                <SearchInput
-                    data={inMemoryElements}
-                    getData={getDataFromChild}
-                    label='Bucar por dependencia'
-                />
+            {/* LISTADO */}
+            <FlatList
+                data={ elements }
+                contentContainerStyle={{
+                    paddingBottom: 50,
+                }}
+                renderItem={({ item }) => ( 
+                    <Dependency 
+                        data={item} 
+                        handlePress={handlePress} 
+                        sendMail={sendMail} 
+                        dialNumber={dialNumber}
+                    /> 
+                )}
+                keyExtractor={(item, index) => index.toString()}
+            />
 
-                {/* Listado */}
-                <FlatList
-                    data={ elements }
-                    contentContainerStyle={{
-                        paddingBottom: 50,
-                    }}
-                    renderItem={({ item }) => ( 
-                        <Dependency 
-                            data={item} 
-                            handlePress={handlePress} 
-                            sendMail={sendMail} 
-                            dialNumber={dialNumber} 
-                        /> 
-                    )}
-                    keyExtractor={(item, index) => index.toString()}
-                />
-
-            </View>
         </View> // Fin de la Pantalla
     ) // Fin del Return
 } // Fin del Componente
-
-// Estilos del Componente
-const styles = StyleSheet.create({
-
-    // Corrección de la posición de la barra de búsqueda
-    localInput: {
-        marginTop: -Constants.statusBarHeight,
-    },
-})

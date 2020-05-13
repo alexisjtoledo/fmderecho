@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, FlatList, StyleSheet } from 'react-native'
+import { View, FlatList } from 'react-native'
 import Header from '../components/Header'
 import SubjectDates from '../components/SubjectDates'
 import GlobalStyles from '../constants/GlobalStyles'
@@ -31,35 +31,23 @@ export default function AcademicCalendarScreen({ navigation }) {
                 backButton={true} 
             />
 
-            {/* CONTENIDO */}
-            <View style={GlobalStyles.container}>
+            {/* CUADRO DE BÚSQUEDA */}
+            <SearchInput
+                data={inMemoryElements}
+                getData={getDataFromChild}
+                label='Bucar por materia'
+            />
 
-                {/* CUADRO DE BÚSQUEDA */}
-                <SearchInput
-                    data={inMemoryElements}
-                    getData={getDataFromChild}
-                    label='Bucar por materia'
-                />
+            {/* LISTADO */}
+            <FlatList
+                data={ elements }
+                contentContainerStyle={{
+                    paddingBottom: 50,
+                }}
+                renderItem={({ item }) => (  <SubjectDates nav={navigation} data={item} /> )}
+                keyExtractor={(item, index) => index.toString()}
+            />
 
-                {/* Listado */}
-                <FlatList
-                    data={ elements }
-                    contentContainerStyle={{
-                        paddingBottom: 50,
-                    }}
-                    renderItem={({ item }) => (  <SubjectDates nav={navigation} data={item} /> )}
-                    keyExtractor={(item, index) => index.toString()}
-                />
-            </View>
         </View> // Fin de la pantalla
     ) // Fin del Return
 } // Fin del Componente
-
-// Estilos del Componente
-const styles = StyleSheet.create({
-
-    // Corrección de la posición de la barra de búsqueda
-    localInput: {
-        marginTop: -Constants.statusBarHeight,
-    },
-})
