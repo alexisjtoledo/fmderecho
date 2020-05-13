@@ -4,6 +4,7 @@ import Layout from './Layout' // Importo diseños
 import Colors from './Colors' // Importo colores
 
 export default StyleSheet.create({
+
     // Estilo del contenedor de todas las pantallas
     container: {
         flex: 1,
@@ -12,14 +13,22 @@ export default StyleSheet.create({
         maxHeight: Layout.window.height,
         minWidth: Layout.window.width,
     },
-    // Estilo de los títulos de las secciones principales
-    sectionTitle: {
-        color: Colors.textColor,
-        fontSize: 25,
-        fontWeight: 'bold',
-        marginHorizontal: 16,
-        marginVertical: 10,
+
+    // Contenedor de la pantalla principal
+    mainScreenContainer: {
+        flex: 1,
+        marginLeft: 16,
+        paddingBottom: Constants.statusBarHeight,
     },
+
+    // Contendor de la panatalla Enlaces Útiles
+    usefulLinksContainer: {
+        borderTopColor: '#333333',
+        borderTopWidth: 2,
+        flex: 1,
+        paddingVertical: 10,
+    },
+
     // Estilo de los inputs de búsqueda de las secciones principales
     searchInput: {
         marginHorizontal: 16,
@@ -31,6 +40,7 @@ export default StyleSheet.create({
         borderRadius: 10,
         color: Colors.textColor,
     },
+
     // Estilos de elemento de carga
     containerLoading: {
         flex: 1,
@@ -40,11 +50,18 @@ export default StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-    // Estilos del texto del elemento de carga
-    loading: {
-        fontSize: 30,
-        fontWeight: 'bold',
-        color: '#FFFFFF',
+
+    // iFrame
+    frame: {
+        maxWidth: Layout.window.width,
+        backgroundColor: Colors.backgroundColor,
+    },
+
+    // Estilos del contenedor principal
+    contentBox: {
+        borderTopColor: "#333333",
+        borderTopWidth: 2,
+        paddingBottom: Constants.statusBarHeight + 10,
     },
 
 

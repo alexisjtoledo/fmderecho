@@ -2,10 +2,11 @@ import React from 'react';
 import { Platform } from 'react-native';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
+import Colors from '../constants/Colors'
 
 import TabBarIcon from '../components/TabBarIcon';
 
-import HomeScreen from '../screens/HomeScreen';
+import Router from '../navigation/StackNavigator';
 import ProceduresScreen from '../screens/ProceduresScreen';
 import ProgramsScreen from '../screens/ProgramsScreen';
 import StudyMaterialScreen from '../screens/StudyMaterialScreen';
@@ -19,7 +20,7 @@ const config = Platform.select({
 /* INICIO */
 const HomeStack = createStackNavigator(
   {
-    Home: HomeScreen,
+    Home: Router,
   },
   {
     header: null,
@@ -122,7 +123,6 @@ ContactStack.navigationOptions = {
 
 ContactStack.path = '';
 
-/* ARMADO DE LA TAB BAR */
 const tabNavigator = createBottomTabNavigator({
   HomeStack,
   ProceduresStack,
@@ -131,13 +131,13 @@ const tabNavigator = createBottomTabNavigator({
   ContactStack,
 }, {
   tabBarOptions: {
-      activeTintColor: "#FFFFFF",
-      inactiveTintColor: "#717171",
-      border: '#121212',
+      activeTintColor: Colors.tintColor,
+      inactiveTintColor: Colors.tabIconDefault,
+      border: Colors.tabBar,
       style: {
         marginBottom: 5,
-        backgroundColor: "#121212",
-        border: '#121212',
+        backgroundColor: Colors.tabBar,
+        border: Colors.tabBar,
       },
       labelStyle: {
         fontSize: 9,

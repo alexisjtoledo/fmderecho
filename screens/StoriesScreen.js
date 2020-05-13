@@ -1,40 +1,29 @@
-// Componentes y Elementos
-import React, { 
-    useState, 
-    useEffect 
-} from 'react'
+import React, { useState } from 'react'
 import { 
-    ScrollView, 
-    StyleSheet, 
-    Text, 
-    TouchableOpacity,  
-    Modal, 
-    View, 
+    View,
+    TouchableOpacity,
     Image,
+    Text,
+    Modal,
+    ScrollView,
+    StyleSheet
 } from 'react-native'
 import { Video } from 'expo-av'
-
-// Estilos
 import GlobalStyles from '../constants/GlobalStyles'
-import Color from '../constants/Colors'
+import Colors from '../constants/Colors'
 import Layout from '../constants/Layout'
 import Constants from 'expo-constants'
 import { Ionicons } from '@expo/vector-icons'
 
 export default function StoriesScreen({ navigation }) {
 
-    // Constantes de datos traídos vía navegación para el modal
     const name = navigation.getParam('name');
     const description = navigation.getParam('description');
     const videoUri = navigation.getParam('video');
     const pictureUri = navigation.getParam('picture');
-
-    // Constantes para suplir el State en funciones (Hooks)
     const [ modalVisible, setModalVisible ] = useState(false);
     
     return (
-
-        /* CONTENEDOR PRINCIPAL */
         <View style={GlobalStyles.container}>
 
             {/* VIDEO DE FONDO */}
@@ -43,11 +32,10 @@ export default function StoriesScreen({ navigation }) {
                 rate={1.0}
                 volume={1.0}
                 isMuted={false}
-                resizeMode="cover"
+                resizeMode='cover'
                 shouldPlay
                 style={styles.video}
             />
-
 
             {/* CABECERA */}
             <View style={styles.header}>
@@ -59,7 +47,11 @@ export default function StoriesScreen({ navigation }) {
                 >
 
                     {/* Imagen del botón */}
-                    <Ionicons name={'ios-arrow-back'} size={30} color={Color.secondary} />
+                    <Ionicons 
+                        name={'ios-arrow-back'} 
+                        size={30} 
+                        color={Colors.secondary} 
+                    />
 
                 </TouchableOpacity>
 
@@ -73,8 +65,8 @@ export default function StoriesScreen({ navigation }) {
                 </View>
 
                 {/* Título de la pantalla */}
-                <Text style={[styles.headerTitle, {}]}>
-                    {navigation.getParam('name')}
+                <Text style={styles.headerTitle}>
+                    {name}
                 </Text>
 
             </View>
@@ -84,14 +76,20 @@ export default function StoriesScreen({ navigation }) {
                 style = {styles.openModalBtn}
                 onPress={() => {setModalVisible(true)}}
             >
-                <Ionicons name={'ios-arrow-up'} size={30} color={Color.secondary} />
-                <Text style={styles.openModalText}>Ver en formato texto</Text>
+                <Ionicons 
+                    name={'ios-arrow-up'} 
+                    size={30} 
+                    color={Colors.secondary} 
+                />
+                <Text style={styles.openModalText}>
+                    Ver en formato texto
+                </Text>
             </TouchableOpacity>
 
             {/* MODAL DE VERSIÓN TEXTO */}
             <Modal
-                animationType="slide"
-                transparent={false}
+                animationType='slide'
+                transparent={true}
                 visible={modalVisible}
                 onRequestClose={() => {setModalVisible(!modalVisible)}}
             >
@@ -107,7 +105,11 @@ export default function StoriesScreen({ navigation }) {
                             onPress={() => {setModalVisible(!modalVisible)}}
                             style={styles.modalBackButton} 
                         >
-                                <Ionicons name={'ios-arrow-back'} size={30} color={Color.textColor} />
+                                <Ionicons 
+                                    name={'ios-arrow-back'} 
+                                    size={30} 
+                                    color={Colors.textColor}
+                                />
                                 <Text style={styles.modalHeaderTitle}>
                                     {name}
                                 </Text>
@@ -115,17 +117,21 @@ export default function StoriesScreen({ navigation }) {
                     </View>
 
                     {/* Contenido del modal */}
-                    <Text style={styles.modalText}>{description}</Text>
+                    <Text style={styles.modalText}>
+                        {description}
+                    </Text>
 
                 </ScrollView>
             </Modal>
-        </View>
-    );
-}
+            {/* Fin del modal */}
+        </View> // Fin del Story
+    ) // Fin del return
+} // Fin del componente
 
+// Estilos
 const styles = StyleSheet.create({
 
-    // Estilos del contenido principal (video)
+    // Pantalla principal (video)
     video: {
         width: Layout.window.width,
         height: Layout.window.height,
@@ -137,7 +143,7 @@ const styles = StyleSheet.create({
         bottom: 0,
     },
     
-    // Estilos de la cabecera
+    // Cabecera (pantalla principal)
     header: {
         flex: 1,
         flexDirection: 'row',
@@ -147,7 +153,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 16,
     },
 
-    // Estilos del botón volver
+    // Botón volver (pantalla principal)
     backButton: {
         height: 40,
         minWidth: 20,
@@ -157,12 +163,12 @@ const styles = StyleSheet.create({
         flexGrow: 1,
     },
 
-    // Estilos del título de la cabecera
+    // Título de la cabecera (pantalla principal)
     headerTitle: {
-        color: Color.textColor,
+        color: Colors.textColor,
         fontSize: 16,
         fontWeight: 'bold',
-        textShadowColor: Color.black,
+        textShadowColor: Colors.black,
         textShadowOffset: { 
             width: 1, 
             height: 1
@@ -175,7 +181,7 @@ const styles = StyleSheet.create({
         textAlignVertical: 'center', // Text Vertical Align Android
     },
 
-    // Estilos del contenedor del thumbnail de la cabecera
+    // Contenedor del thumbnail de la cabecera (pantalla principal)
     imageContainer: {
         minWidth: 40,
         maxWidth: 40,
@@ -186,13 +192,13 @@ const styles = StyleSheet.create({
         marginRight: 10,
     },
 
-    // Estilos de la imagen de la cabecera 
+    // Imagen de la cabecera (pantalla principal)
     picture: {
         width: '100%',
         height: '100%',
     },
     
-    // Estilos del botón de abrir modal
+    // Botón formato texto (pantalla principal)
     openModalBtn: {
         flex: 1,
         alignItems: 'center',
@@ -202,11 +208,11 @@ const styles = StyleSheet.create({
         bottom: 25,
     },
 
-    // Estilos del texto de abrir modal
+    // Texto del botón formato texto (pantalla principal)
     openModalText: {
         fontSize: 14,
-        color: Color.textColor,
-        textShadowColor: Color.black,
+        color: Colors.textColor,
+        textShadowColor: Colors.black,
         textShadowOffset: { 
             width: 1.5, 
             height: 1.5
@@ -214,23 +220,23 @@ const styles = StyleSheet.create({
         textShadowRadius: 5,
     },
 
-    // Estilos del contenedor del modal
+    // Contenedor principal (modal)
     modalBackGround: {
-        paddingHorizontal: 16,
-        backgroundColor: Color.backgroundColor,
+        backgroundColor: 'rgba(33,32,30,0.95)',
     },
 
-    // Estilos de la cabecera
+    // Cabecera (modal)
     modalHeader: {
         top: 0,
         paddingTop: Platform.OS === 'ios' ? Constants.statusBarHeight + 10 : 10,
         paddingBottom: 10,
-        backgroundColor: Color.backgroundColor,
+        paddingHorizontal: 16,
+        backgroundColor: Colors.backgroundColor,
         borderBottomColor: '#282828',
         borderBottomWidth: 2,
     },
 
-    // Estilos del botón volver
+    // Botón volver (modal)
     modalBackButton: {
         minHeight: 40,
         alignItems: 'center',
@@ -238,10 +244,10 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
 
-    // Estilos del título de la cabecera
+    // Título de la cabecera (modal)
     modalHeaderTitle: {
-        color: Color.textColor,
-        fontSize: 16,
+        color: Colors.textColor,
+        fontSize: 20,
         fontWeight: 'bold',
         height: 40,
         lineHeight: Platform.OS === 'ios' ? 35 : 36, // Text Vertical Align iOS
@@ -249,11 +255,12 @@ const styles = StyleSheet.create({
         marginLeft: 10,
     },
 
-    // Estilos del contenido del modal
+    // Contenido (modal)
     modalText: {
         fontSize: 14,
-        color: Color.textColor,
+        color: Colors.textColor,
         paddingTop: 10,
         paddingBottom: Constants.statusBarHeight,
+        paddingHorizontal: 16,
     },
-});
+})

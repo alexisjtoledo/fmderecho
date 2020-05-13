@@ -1,103 +1,131 @@
-// Componentes y elementos
-import React, { 
-    Component, 
-    useState, 
-    useEffect 
-} from 'react'
+import React, { useState } from 'react'
 import { 
     View, 
-    Text, 
-    StyleSheet, 
-    Button, 
     FlatList, 
-    Image, 
-    TouchableOpacity, 
-    Platform 
+    StyleSheet,
+    Linking,
+    Alert
 } from 'react-native'
-
-// Estilos
+import Header from '../components/Header'
+import Dependency from '../components/Dependency'
+import SearchInput from '../components/SearchInput'
 import GlobalStyles from '../constants/GlobalStyles'
-import Color from '../constants/Colors'
-import Layout from '../constants/Layout'
 import Constants from 'expo-constants'
-import { Ionicons } from '@expo/vector-icons'
 
 export default function DependenciesScreen({ navigation }) {
 
+    const globalData = navigation.getParam('data');
+    const [elements, setElements] = useState( globalData.Dependencies );
+    const [inMemoryElements, setInMemoryElements] = useState( globalData.Dependencies );
+
+    /**
+     *  Función para filtrar elementos
+     * @param { Object } data Recibe los elementos filtrados
+     * @memberof DependenciesScreen
+     */
+    var getDataFromChild = data => {
+        setElements(data);
+    }
+
+    /**
+     * Función encargada de manejar la navegación entre pantallas
+     * @param { String } screenName Voy a recibir el nombre de la pantalla
+     * @param { String } pickerValue Y también el nombre de la dependencia donde quiero arrancar
+     * @memberof DependenciesScreen
+     */
+    var handlePress = (screenName, pickerValue) => navigation.navigate(screenName, {itemValue: pickerValue})
+
+    /**
+     * Función para manipular las llamadas
+     * @param { String } number Recibo como parámetro un número de teléfono
+     * @memberof DependenciesScreen
+     */
+    var dialNumber = number => {
+        // Primero armo la URL del teléfono
+        let url = `${Platform.OS === 'ios' ? 'telprompt:' : 'tel:'}${number}`;
+        // Luego pregunto si puedo abrir la app teléfono
+        Linking.canOpenURL(url).then((canOpen) => {
+            if (canOpen) {
+                // Si puede, lo hago
+                Linking.openURL(url);
+            } else {
+                // Si no, envío una alerta
+                Alert.alert(
+                    'Oops!, Parece que tu teléfono no soporta esta función :('
+                );
+            }
+        });
+    }
+
+    /**
+     * Función para manipular los enlaces
+     * @param { String } address Recibo como parámetro una dirección de correo
+     * @memberof DependenciesScreen
+     */
+    var sendMail = address => {
+        // Primero armo la URL del correo
+        let url = `mailto:${address}`;
+        // Luego pregunto si puedo abrir la app mail
+        Linking.canOpenURL(url).then((canOpen) => {
+            if (canOpen) {
+                // Si puede, lo hago
+                Linking.openURL(url);
+            } else {
+                // Si no, envío una alerta
+                Alert.alert(
+                    'Oops!, Parece que tu teléfono no soporta esta función :('
+                );
+            }
+        });
+    }
+
     return (
-        /* CONTENEDOR PRINCIPAL*/
         <View style={GlobalStyles.container}>
 
             {/* CABECERA */}
-            <View style={styles.header}>
+            <Header 
+                screenName='Dependencias' 
+                navigation={navigation}
+                backButton={true} 
+            />
 
-                {/* Botón volver */}
-                <TouchableOpacity
-                    style={styles.backButton}
-                    onPress={() => navigation.goBack()}
-                >
-
-                    {/* Ímagen del botón */}
-                    <Ionicons name={'ios-arrow-back'} size={30} color={Color.secondary} />
-
-                </TouchableOpacity>
-
-                {/* Título de la pantalla */}
-                <Text style={[styles.headerTitle, {}]}>Dependencias Administrativas</Text>
-
-            </View>
-            
             {/* CONTENIDO */}
-            <View style={styles.contentBox}>
-                <Text style={styles.text}>PRÓXIMAMENTE</Text>
-            </View>
-        </View>
-    )
-}
+            <View style={GlobalStyles.container}>
 
+                {/* CUADRO DE BÚSQUEDA */}
+                <SearchInput
+                    data={inMemoryElements}
+                    getData={getDataFromChild}
+                    label='Bucar por dependencia'
+                />
+
+                {/* Listado */}
+                <FlatList
+                    data={ elements }
+                    contentContainerStyle={{
+                        paddingBottom: 50,
+                    }}
+                    renderItem={({ item }) => ( 
+                        <Dependency 
+                            data={item} 
+                            handlePress={handlePress} 
+                            sendMail={sendMail} 
+                            dialNumber={dialNumber} 
+                        /> 
+                    )}
+                    keyExtractor={(item, index) => index.toString()}
+                />
+
+            </View>
+        </View> // Fin de la Pantalla
+    ) // Fin del Return
+} // Fin del Componente
+
+// Estilos del Componente
 const styles = StyleSheet.create({
 
-    // Estilos de la cabecera
-    header: {
-        flex: 1,
-        flexDirection: 'row',
-        paddingVertical: 10,
-        minHeight: 60,
-        maxHeight: 60,
-        paddingHorizontal: 16,
+    // Corrección de la posición de la barra de búsqueda
+    localInput: {
+        marginTop: -Constants.statusBarHeight,
     },
-
-    // Estilos del botón volver
-    backButton: {
-        height: 40,
-        flex: 1,
-        justifyContent: 'center',
-        minWidth: 25,
-        maxWidth: 25,
-    },
-
-    // Estilos del título de la cabecera
-    headerTitle: {
-        color: Color.textColor,
-        fontSize: 25,
-        fontWeight: 'bold',
-        height: 40,
-        lineHeight: Platform.OS === 'ios' ? 38 : 36, // Text Vertical Align iOS
-        textAlignVertical: 'center', // Text Vertical Align Android
-    },
-
-    // Estilos del contenedor principal
-    contentBox: {
-        borderTopColor: '#333333',
-        borderTopWidth: 2,
-        paddingBottom: Constants.statusBarHeight + 10,
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-
-    text: {
-        fontSize: 20,
-        color: Color.textColor,
-    }
-});
+})
