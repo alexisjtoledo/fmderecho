@@ -188,6 +188,7 @@ const styles = StyleSheet.create({
         borderBottomColor: '#333333',
         borderBottomWidth: 2,
     },
+    
     // Imagen de trámite (elemento)
     procedureImage: {
         width: 120,
