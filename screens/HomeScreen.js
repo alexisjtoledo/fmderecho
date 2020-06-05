@@ -45,7 +45,7 @@ export default function HomeScreen({ navigation }) {
             <WelcomeImage />
 
             {/* CONTENIDO */}
-            <View style={GlobalStyles.mainScreenContainer}>
+            <View>
 
                 {/* STACK DE INFORMACIÓN IMPORTANTE */}
                 <ImportantInformationStack 

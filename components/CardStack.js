@@ -20,7 +20,7 @@ export default class CardStack extends Component {
         // Utilizo la propiedad recibida (navigation) para abrir el componente Stories con la info recibida del elemento seleccionado.
         this.props.navigation.navigate('Stories', data);
     }
-    
+
     render() {
         return (
             <View>
@@ -53,21 +53,31 @@ export default class CardStack extends Component {
                     keyExtractor={(item, index) => index.toString()} // Genero un identificador para cada miembro...
                     horizontal={true} // Le digo que renderice verticalmente...
                     showsHorizontalScrollIndicator={false} // Y que no muestre la barra de desplazamiento.
+                    ListHeaderComponent={<Separator />} // El tope del inicio para margen
                 />
             </View> // Fin del Stack
         ) // Fin del Return
     } // Fin del Render
 } // Fin del Componente
 
+export class Separator extends Component {
+    render() {
+        return (
+            <View style={styles.separator}></View>
+        )
+    }
+}
+
 // Estilos del componente
 const styles = StyleSheet.create({
-    
+
     // Título de cada stack
     titles: {
         color: Colors.tintColor,
         fontSize: 18,
         fontWeight: 'bold',
         marginBottom: 5,
+        marginLeft: 16,
     },
 
     // Tarjetas
@@ -114,5 +124,11 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         overflow: 'hidden',
         fontWeight: 'bold',
+    },
+
+    // Separador
+    separator: {
+        width: 16,
+        height: 30,
     },
 });

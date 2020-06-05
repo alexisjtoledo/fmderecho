@@ -1,18 +1,33 @@
 // Componentes y elementos básicos
-import { AppLoading } from 'expo';
-import { Asset } from 'expo-asset';
-import * as Font from 'expo-font';
-import React, { useState, useEffect } from 'react';
-import { Platform, StatusBar, StyleSheet, View } from 'react-native';
+import { AppLoading } from 'expo'
+import { Asset } from 'expo-asset'
+import * as Font from 'expo-font'
+import React, { useState, useEffect } from 'react'
+import { Platform, StatusBar, StyleSheet, View } from 'react-native'
 // Estilos
-import { Ionicons } from '@expo/vector-icons';
-import Color from './constants/Colors';
+import { Ionicons } from '@expo/vector-icons'
+import Color from './constants/Colors'
 // Componentes y elementos
-import AppNavigator from './navigation/AppNavigator';
+import AppNavigator from './navigation/AppNavigator'
+import OnboardingScreen from './screens/OnboardingScreen'
+import AsyncStorage from '@react-native-community/async-storage'
 
 export default function App(props) {
     const [isLoadingComplete, setLoadingComplete] = useState(false);
 
+    /**
+     * Función para verificar si es la primera vez que entro a la App
+     * @returns { Bool } 
+     */
+    var firstTime = async () => {
+            const value = await AsyncStorage.getItem('firstTime');
+            if (value == 'false') {
+                return false
+            } else {
+                return true
+            }
+        }
+        
     if (!isLoadingComplete && !props.skipLoadingScreen) {
         return (
             <AppLoading
@@ -22,10 +37,12 @@ export default function App(props) {
             />
         );
     } else {
+
         return (
             <View style={styles.container}>
                 {Platform.OS === 'ios' && <StatusBar barStyle='default' />}
-                <AppNavigator />
+                {/* Compruebo si es la primera vez en la App para ver si muestro el onboarding o la App */}
+                {firstTime ? <OnboardingScreen /> : <AppNavigator />}
             </View>
         );
     }
@@ -58,8 +75,11 @@ function handleLoadingError(error) {
     console.warn(error);
 }
 
-function handleFinishLoading(setLoadingComplete) {
+async function handleFinishLoading(setLoadingComplete) {
     setLoadingComplete(true);
+    // Al terminar de cargar la app, inicializo la variable en el almacenamiento
+    // persistente para que no hay ningún problema.
+    await AsyncStorage.setItem('firstTime', 'true');
 }
 
 // Estilos principales

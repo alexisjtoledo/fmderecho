@@ -106,6 +106,8 @@ export default class ImportantInformationStack extends Component {
                     horizontal={true}
                     showsHorizontalScrollIndicator={false}
                 >
+                    {/* SEPARADOR */}
+                    <View style={styles.separator} ></View>
 
                     {/* PLAN DE ESTUDIOS */}
                     <TouchableOpacity
@@ -224,6 +226,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: 'bold',
         marginBottom: 5,
+        marginLeft: 16,
     },
 
     // Elemento del menú
@@ -299,5 +302,11 @@ const styles = StyleSheet.create({
     modalCloseBtnText: {
         color: Colors.backgroundColor,
         fontSize: 14,
+    },
+
+    // Separador
+    separator: {
+        width: 16,
+        height: 30,
     },
 })

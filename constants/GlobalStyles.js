@@ -9,7 +9,7 @@ export default StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: Colors.backgroundColor,
-        paddingTop: Constants.statusBarHeight,
+        paddingTop: Platform.OS === 'ios' ? Constants.statusBarHeight : null,
         maxHeight: Layout.window.height,
         minWidth: Layout.window.width,
     },
@@ -18,7 +18,7 @@ export default StyleSheet.create({
     mainScreenContainer: {
         flex: 1,
         marginLeft: 16,
-        paddingBottom: Constants.statusBarHeight,
+        paddingBottom: Platform.OS === 'ios' ? Constants.statusBarHeight : null,
     },
 
     // Contendor de la panatalla Enlaces Útiles
