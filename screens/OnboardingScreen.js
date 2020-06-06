@@ -22,21 +22,21 @@ const slides = [
         key: 2,
         title: 'Dale un vistazo',
         text: 'Encontrá toda la información que necesitás sobre la facultad.\n\nPodés consultar correlatividades, programas, fechas de examen, trámites y todo lo que te imagines.',
-        image: require('../assets/images/slide-1.png'),
+        image: require('../assets/images/slide-2.png'),
         backgroundColor: '#42A9CC',
     },
     {
         key: 3,
         title: 'Comprá con Descuento',
         text: 'Con nuestra app vas a poder conseguir descuentos en comercios de distintos rubros.\n\n¡Buscá la sección y aprovechalos!',
-        image: require('../assets/images/slide-1.png'),
+        image: require('../assets/images/slide-3.png'),
         backgroundColor: '#E1605D',
     },
     {
         key: 4,
         title: 'Siempre comunicados',
         text: '¿El baño estaba roto?¿No hay luz en el aula? Envianos una foto desde la App y nosotros nos encargamos de avisar y gestionar el arreglo con la facu lo antes posible.',
-        image: require('../assets/images/slide-1.png'),
+        image: require('../assets/images/slide-4.png'),
         backgroundColor: '#FDBD56',
     }
 ];
@@ -55,7 +55,7 @@ export default class OnboardingScreen extends Component {
     _renderItem = ({ item }) => {
         return (
         <View style={[styles.slide, {backgroundColor: item.backgroundColor}]}>
-            <Image source={item.image} resizeMode='center' style={styles.image} />
+            <Image source={item.image} resizeMode='contain' style={styles.image} />
             <View style={styles.textContainer}>
                 <Text style={styles.title}>{item.title}</Text>
                 <Text style={styles.text}>{item.text}</Text>
@@ -150,7 +150,7 @@ const styles = StyleSheet.create({
 
     // Fondo de la Imagen
     image: {
-        width: (Layout.window.width / 8) * 6,
+        width: Layout.window.width,
         height: Layout.window.width,
         marginBottom: 16,
     },

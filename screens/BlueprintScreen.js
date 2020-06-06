@@ -107,7 +107,7 @@ export class IosPicker extends Component {
                 <Picker.Item label='Dpto. Práctica Profesional' value='dpractica' />
                 <Picker.Item label='Dpto. Derecho Penal' value='dpenal' />
                 <Picker.Item label='Dpto. Derecho Comercial' value='dcomercial' />
-                <Picker.Item label='Sala Velez Sársfield' value='vsarsfield' />
+                <Picker.Item label='Sala Alberdi' value='vsarsfield' />
                 <Picker.Item label='Sala 3' value='sala3' />
                 <Picker.Item label='Sala 7' value='sala7' />
                 <Picker.Item label='Salón Velez Mariconde' value='vmariconde' />
