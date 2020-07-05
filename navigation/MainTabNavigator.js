@@ -1,16 +1,31 @@
-import React from 'react';
-import { Platform } from 'react-native';
-import { createStackNavigator } from 'react-navigation-stack';
-import { createBottomTabNavigator } from 'react-navigation-tabs';
+import React from 'react'
+import { Platform } from 'react-native'
+import { createStackNavigator } from 'react-navigation-stack'
+import { createBottomTabNavigator } from 'react-navigation-tabs'
 import Colors from '../constants/Colors'
+import TabBarIcon from '../components/TabBarIcon'
 
-import TabBarIcon from '../components/TabBarIcon';
+/* PANTALLAS */
 
-import Router from '../navigation/StackNavigator';
-import ProceduresScreen from '../screens/ProceduresScreen';
-import ProgramsScreen from '../screens/ProgramsScreen';
-import StudyMaterialScreen from '../screens/StudyMaterialScreen';
-import ContactScreen from '../screens/ContactScreen';
+// Tab Navigator
+import StackNavigator from './StackNavigator'
+import ProceduresScreen from '../screens/ProceduresScreen'
+import ProgramsScreen from '../screens/ProgramsScreen'
+import DiscountsScreen from '../screens/DiscountsScreen'
+import ContactScreen from '../screens/ContactScreen'
+
+// Stack Navigators
+import Home from '../screens/HomeScreen'
+import Stories from '../screens/StoriesScreen'
+import TweetsScreen from '../screens/TweetsScreen'
+import Blueprint from '../screens/BlueprintScreen'
+import Dependencies from '../screens/DependenciesScreen'
+import AcademicCalendar from '../screens/AcademicCalendarScreen'
+import UsefulLinks from '../screens/UsefulLinksScreen'
+import CSE from '../screens/CSEScreen'
+import CorrelativitiesScreen from '../screens/CorrelativitiesScreen'
+import DiscountDetailsScreen from '../screens/DiscountDetailsScreen'
+import DiscountCodeScreen from '../screens/DiscountCodeScreen'
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
@@ -20,11 +35,20 @@ const config = Platform.select({
 /* INICIO */
 const HomeStack = createStackNavigator(
   {
-    Home: Router,
+    Home: Home,
+    Stories: Stories,
+    TweetsScreen: TweetsScreen,
+    Blueprint: Blueprint,
+    Dependencies: Dependencies,
+    AcademicCalendar: AcademicCalendar,
+    UsefulLinks: UsefulLinks,
+    CSE: CSE,
+    CorrelativitiesScreen: CorrelativitiesScreen,
   },
   {
     header: null,
-    headerMode: 'none'
+    headerMode: 'none',
+    navigation: navigator
   },
   config
 );
@@ -45,7 +69,8 @@ const ProceduresStack = createStackNavigator(
   },
   {
     header: null,
-    headerMode: 'none'
+    headerMode: 'none',
+    navigation: navigator
   },
   config
 );
@@ -80,10 +105,12 @@ ProgramsStack.navigationOptions = {
 
 ProgramsStack.path = '';
 
-/* MATERIAL DE ESTUDIO */
-const StudyMaterialStack = createStackNavigator(
+/* DESCUENTOS */
+const DiscountsStack = createStackNavigator(
   {
-    StudyMaterial: StudyMaterialScreen,
+    Discounts: DiscountsScreen,
+    DiscountDetailsScreen: DiscountDetailsScreen,
+    DiscountCodeScreen: DiscountCodeScreen,
   },
   {
     header: null,
@@ -92,14 +119,14 @@ const StudyMaterialStack = createStackNavigator(
   config
 );
 
-StudyMaterialStack.navigationOptions = {
-  tabBarLabel: 'Apuntes',
+DiscountsStack.navigationOptions = {
+  tabBarLabel: 'Descuentos',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-bookmarks' : 'md-bookmarks'} />
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-card' : 'md-card'} />
   ),
 };
 
-StudyMaterialStack.path = '';
+DiscountsStack.path = '';
 
 
 /* CONSULTAS */
@@ -127,7 +154,7 @@ const tabNavigator = createBottomTabNavigator({
   HomeStack,
   ProceduresStack,
   ProgramsStack,
-  StudyMaterialStack,
+  DiscountsStack,
   ContactStack,
 }, {
   tabBarOptions: {

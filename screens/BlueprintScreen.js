@@ -230,7 +230,7 @@ export class AndroidPicker extends Component {
                 <Picker.Item label='Sala 3' value='sala3' />
                 <Picker.Item label='Sala 7' value='sala7' />
                 <Picker.Item label='Salón Velez Mariconde' value='vmariconde' />
-                <Picker.Item label='Sala Velez Sársfield' value='vsarsfield' />
+                <Picker.Item label='Sala Alberdi' value='vsarsfield' />
                 <Picker.Item label='Dpto. Estudios Básicos' value='ebasicos' />
                 <Picker.Item label='Dpto. Derecho Social' value='dsocial' />
                 <Picker.Item label='Dpto. Derecho Público' value='dpublico' />

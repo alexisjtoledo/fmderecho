@@ -3,16 +3,16 @@ import {
     View, 
     ActivityIndicator, 
     FlatList, 
-    StyleSheet, 
-    Linking,
-    Alert
+    StyleSheet,
 } from 'react-native'
 import GlobalStyles from '../constants/GlobalStyles'
 import Header from '../components/Header'
 import StudyMaterial from '../components/StudyMaterial'
 import SearchInput from '../components/SearchInput'
+import Discount from '../components/Discount'
+import TagFilter from '../components/TagFilter'
 
-export default class StudyMaterialScreen extends Component {
+export default class DiscountsScreen extends Component {
 
     constructor(props){
         super(props);
@@ -31,7 +31,7 @@ export default class StudyMaterialScreen extends Component {
     /**
      * Función para solicitar los datos de la API y
      * manejar el estado de carga de la pantalla
-     * @memberof StudyMaterialScreen
+     * @memberof DiscountsScreen
      */
     getData = () => {
         this.setState({ loading: true }); // Aviso que voy a realizar la descarga
@@ -40,38 +40,27 @@ export default class StudyMaterialScreen extends Component {
             .then((res) => {
                 // y con el JSON guardo los datos en los arrays que creé en el estado
                 this.setState({
-                    elements: res.StudyMaterial,
-                    inMemoryElements: res.StudyMaterial,
+                    elements: res.Discounts,
+                    inMemoryElements: res.Discounts,
                     loading: false, // Y finalmente aviso que la descarga ya terminó
                 });
             });
     }
 
     /**
-     * Función para manipular los enlaces
-     * @param { String } url Recibo como parámetro una dirección URL
-     * @memberof StudyMaterialScreen
+     * Función para manipular la navegación
+     * @param { String } screen Recibo el nombre de la pantalla que voy a abrir
+     * @param { Object } data Recibo los datos que voy a transmitir
+     * @memberof DiscountsScreen
      */
-    handlePress = (url) => {
-        // Primero consulto si el dispositivo puede abrirlo
-        Linking.canOpenURL(url)
-            .then((canOpen) => {
-                if (canOpen) {
-                    // Si puede, lo hago
-                    Linking.openURL(url);
-                } else {
-                    // Si no, envío una alerta.
-                    Alert.alert(
-                        'Oops!, Parece que tu teléfono no soporta esta función :('
-                    );
-                }
-            });
+    handlePress = (screen, data) => {
+        this.props.navigation.navigate(screen, {data: data})
     }
 
     /**
      *  Función para filtrar elementos
      * @param { Object } data Recibe los elementos filtrados
-     * @memberof StudyMaterialScreen
+     * @memberof DiscountsScreen
      */
     getDataFromChild = data => {
         this.setState({
@@ -93,24 +82,27 @@ export default class StudyMaterialScreen extends Component {
 
                 {/* CABECERA */}
                 <Header 
-                    screenName='Material de Estudio'
+                    screenName='Descuentos'
                 />
 
                 {/* CUADRO DE BÚSQUEDA */}
                 <SearchInput
                     data={this.state.inMemoryElements}
                     getData={this.getDataFromChild}
-                    label='Bucar por materia o autor'
+                    label='Buscá tu descuento'
                 />
 
-                {/* LISTADO DE APUNTES */}
+                {/*  */}
+                <TagFilter />
+
+                {/* LISTADO DE DESCUENTOS */}
                 <FlatList
                     data = {this.state.elements}
                     contentContainerStyle={{
                         paddingBottom: 50,
                     }}
                     renderItem = {
-                        ({item}) => <StudyMaterial data={item} handlePress={this.handlePress} />
+                        ({item}) => <Discount data={item} handlePress={this.handlePress} />
                     }
                     keyExtractor = {(item, index) => index.toString()}
                 />

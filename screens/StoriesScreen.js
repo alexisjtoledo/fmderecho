@@ -14,6 +14,7 @@ import Colors from '../constants/Colors'
 import Layout from '../constants/Layout'
 import Constants from 'expo-constants'
 import { Ionicons } from '@expo/vector-icons'
+import { PanGestureHandler } from 'react-native-gesture-handler';
 
 export default function StoriesScreen({ navigation }) {
 
@@ -72,19 +73,22 @@ export default function StoriesScreen({ navigation }) {
             </View>
             
             {/* BOTÓN DE VERSIÓN TEXTO */}
-            <TouchableOpacity
-                style = {styles.openModalBtn}
-                onPress={() => {setModalVisible(true)}}
-            >
-                <Ionicons 
-                    name={'ios-arrow-up'} 
-                    size={30} 
-                    color={Colors.secondary} 
-                />
-                <Text style={styles.openModalText}>
-                    Ver en formato texto
-                </Text>
-            </TouchableOpacity>
+                <PanGestureHandler
+                    onGestureEvent={() => {setModalVisible(true)}}
+                >
+                    <View
+                        style = {styles.openModalBtn}
+                    >
+                        <Ionicons 
+                            name={'ios-arrow-up'} 
+                            size={30} 
+                            color={Colors.secondary} 
+                        />
+                        <Text style={styles.openModalText}>
+                            Deslizá para más info
+                        </Text>
+                    </View>
+                </PanGestureHandler>
 
             {/* MODAL DE VERSIÓN TEXTO */}
             <Modal
@@ -202,10 +206,12 @@ const styles = StyleSheet.create({
     openModalBtn: {
         flex: 1,
         alignItems: 'center',
+        justifyContent: 'flex-end',
         width: (Layout.window.width - 32),
+        height: 400,
         position: 'absolute',
         left: 16,
-        bottom: 25,
+        bottom: 0,
     },
 
     // Texto del botón formato texto (pantalla principal)
@@ -218,6 +224,7 @@ const styles = StyleSheet.create({
             height: 1.5
         },
         textShadowRadius: 5,
+        paddingBottom: 30,
     },
 
     // Contenedor principal (modal)

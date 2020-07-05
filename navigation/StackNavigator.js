@@ -1,4 +1,4 @@
-// Componentes
+/* // Componentes
 import React from 'react';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
@@ -73,3 +73,4 @@ const screens = {
 const HomeStack = createStackNavigator(screens);
 
 export default createAppContainer(HomeStack);
+ */

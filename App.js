@@ -27,7 +27,7 @@ export default function App(props) {
                 return true
             }
         }
-        
+
     if (!isLoadingComplete && !props.skipLoadingScreen) {
         return (
             <AppLoading
