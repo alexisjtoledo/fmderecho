@@ -14,7 +14,7 @@ import Colors from '../constants/Colors'
 import Layout from '../constants/Layout'
 import Constants from 'expo-constants'
 import { Ionicons } from '@expo/vector-icons'
-import { PanGestureHandler } from 'react-native-gesture-handler';
+import { PanGestureHandler } from 'react-native-gesture-handler'
 
 export default function StoriesScreen({ navigation }) {
 

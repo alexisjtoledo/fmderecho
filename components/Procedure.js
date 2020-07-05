@@ -7,7 +7,8 @@ import {
     Modal,
     SafeAreaView,
     ScrollView,
-    StyleSheet
+    StyleSheet,
+    Platform
 } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
 import Colors from '../constants/Colors'
@@ -99,8 +100,8 @@ export default class Procedure extends Component {
                     <SafeAreaView style={styles.modalContainer}>
                         <View>
 
-                            {/* CONDICIONAL: Si hay un enlace asignado, muestro el botón */}
-                            {this.state.modalBtnAction === '-' ? (
+                            {/* CONDICIONAL: Si hay un enlace asignado, muestro el botón || Solo en Android */}
+                            {this.state.modalBtnAction === '-' || Platform.OS === 'ios' ? (
                                 <View style={styles.buttonContainer}>
                                     <View style={styles.modalCloseContainer}>
                                         <TouchableOpacity

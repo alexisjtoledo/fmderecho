@@ -92,8 +92,11 @@ export default class DiscountsScreen extends Component {
                     label='Buscá tu descuento'
                 />
 
-                {/*  */}
-                <TagFilter />
+                {/* FILTRO POR TAG */}
+                <TagFilter 
+                    data={this.state.inMemoryElements}
+                    getData={this.getDataFromChild}     
+                />
 
                 {/* LISTADO DE DESCUENTOS */}
                 <FlatList

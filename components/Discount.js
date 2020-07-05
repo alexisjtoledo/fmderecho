@@ -17,12 +17,13 @@ export default class Discount extends Component {
     render() {
         return (
 
+            /* ELEMENTO DESCUENTO */
             <TouchableOpacity
                 style={styles.discount}
                 activeOpacity={0.5}
                 onPress={() => {this.props.handlePress('DiscountDetailsScreen', this.props.data)}}
             >
-
+                    {/* IMAGEN DEL DESCUENTO */}
                     <Image
                         source={{ uri: this.props.data.img }}
                         style={styles.image}
@@ -31,6 +32,7 @@ export default class Discount extends Component {
                         resizeMode='cover'
                     />
 
+                    {/* TIEMPO RESTANTE */}
                     <View style={styles.textContainer}>
                         <Text style={styles.title}>{this.props.data.title}</Text>
                         <Text style={styles.remainingTime}>
@@ -59,7 +61,7 @@ export default class Discount extends Component {
                         </View>
                     </View>
 
-                    {/* Ícono Play */}
+                    {/* ÍCONO PLAY */}
                     <Ionicons
                         name={
                             Platform.OS === 'ios'
@@ -79,6 +81,7 @@ export default class Discount extends Component {
 // Estilos del componente
 const styles = StyleSheet.create({
 
+    // Descuento
     discount: {
         flexDirection: 'row',
         alignItems: 'center',
@@ -87,18 +90,20 @@ const styles = StyleSheet.create({
         borderBottomWidth: 2,
     },
 
+    // Imagen del descuento
     image: {
         width: Layout.window.width / 3,
         height: Layout.window.width / 3,
     },
 
+    // Contenedor del texto
     textContainer:{
         width: (Layout.window.width / 4) * 2.4,
         paddingVertical: 5,
         paddingHorizontal: 10,
-
     },
 
+    // Título del descuento
     title:{
         color: Colors.textColor,
         fontSize: 16,
@@ -107,19 +112,14 @@ const styles = StyleSheet.create({
         height: 70,
     },
 
+    // Tiempo Restante
     remainingTime:{
         paddingHorizontal: 5,
         fontSize: 10,
         color: '#BBBBBB',
-
     },
 
-    tagsText:{
-        paddingLeft: 5,
-        marginTop: -3,
-        color: '#BBBBBB',
-    },
-
+    // Contenedor de los tags
     tagsContainer: {
         flex: 1,
         flexDirection: 'row',
@@ -128,59 +128,10 @@ const styles = StyleSheet.create({
         marginTop: 5,
     },
 
-
-
-
-
-
-
-
-
-
-
-
-
-    // Botón
-    container: {
-        flex: 1,
-        flexDirection: 'row',
-        marginBottom: 10,
-        marginHorizontal: 16,
-        paddingVertical: 20,
-        paddingHorizontal: 30,
-        borderRadius: 10,
-        borderColor: Colors.textColor,
-        borderWidth: 1,
-    },
-
-    // Contenedor
-    studyMaterialBox: {
-        flex: 1,
-        flexDirection: 'row',
-        alignItems: 'center',
-    },
-
-    // Contenedor de texto
-    textBox: {
-        marginHorizontal: 20,
-    },
-
-    // Nombre del Material
-    titleText: {
-        color: Colors.textColor,
-        fontSize: 16,
-        fontWeight: 'bold',
-    },
-
-    // Nombre del autos
-    authorText: {
-        fontSize: 14,
-        color: '#DDDDDD',
-    },
-    
-    // Tags
-    additionalText: {
-        fontSize: 10,
+    // Texto de los Tags
+    tagsText:{
+        paddingLeft: 5,
+        marginTop: -3,
         color: '#BBBBBB',
     },
 })
