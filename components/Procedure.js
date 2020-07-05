@@ -97,11 +97,11 @@ export default class Procedure extends Component {
                     transparent={true}
                 >
                     {/* Al abrir un elemento lo muestro en forma de modal que recibe la información que previamente almacené en el estado. */}
-                    <SafeAreaView style={styles.modalContainer}>
+                    <View style={styles.modalContainer}>
                         <View>
 
                             {/* CONDICIONAL: Si hay un enlace asignado, muestro el botón || Solo en Android */}
-                            {this.state.modalBtnAction === '-' || Platform.OS === 'ios' ? (
+                            {this.state.modalBtnAction === '-' ? (
                                 <View style={styles.buttonContainer}>
                                     <View style={styles.modalCloseContainer}>
                                         <TouchableOpacity
@@ -168,7 +168,7 @@ export default class Procedure extends Component {
                             {/* Fin del contenido principal del modal */}
 
                         </View>
-                    </SafeAreaView>
+                    </View>
                 </Modal>
                 {/* Fin del modal */}
             </View> // Fin del trámite
@@ -217,11 +217,12 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
         alignItems: 'flex-end',
+        zIndex: 10,
     },
 
     // Contenedor de botón de cierre (modal)
     modalCloseContainer: {
-        zIndex: 2,
+        zIndex: 12,
         height: 60,
         flexGrow: 1,
         top: (Layout.window.height / 8) * 7,

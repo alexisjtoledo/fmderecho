@@ -8,7 +8,6 @@ import TabBarIcon from '../components/TabBarIcon'
 /* PANTALLAS */
 
 // Tab Navigator
-import StackNavigator from './StackNavigator'
 import ProceduresScreen from '../screens/ProceduresScreen'
 import ProgramsScreen from '../screens/ProgramsScreen'
 import DiscountsScreen from '../screens/DiscountsScreen'
