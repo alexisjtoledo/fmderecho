@@ -2,20 +2,24 @@
   "expo": {
     "name": "fmderecho",
     "slug": "fmderecho",
+    "description": "Aplicación de la Franja Morada de Derecho de Córdoba, conducción del Centro de Estudiantes",
     "privacy": "public",
+    "owner": "alexistoledo",
     "sdkVersion": "36.0.0",
     "platforms": [
       "ios",
       "android",
       "web"
     ],
-    "version": "1.0.0",
+    "version": "2.2.1",
+    "githubUrl": "https://github.com/alexisjtoledo/fmderecho",
+    "primaryColor": "#5B1F53",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "splash": {
       "image": "./assets/images/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#5B1F53"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -24,7 +28,16 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": false
+    },
+    "android": {
+      "package": "com.fmderecho.app",
+      "versionCode": 2,
+      "adaptiveIcon": {
+        "backgroundColor": "#5B1F53",
+        "backgroundImage": "./assets/images/android_icon_bg.png",
+        "foregroundImage": "./assets/images/android_icon.png"
+      }
     }
   }
 }

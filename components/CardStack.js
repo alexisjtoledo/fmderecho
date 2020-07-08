@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
         width: 104,
         height: 138,
         marginRight: 8,
-        marginBottom: 25,
+        marginBottom: 15,
     },
 
     // Imágenes de las tarjetas

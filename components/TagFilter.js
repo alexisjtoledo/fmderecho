@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, TouchableOpacity, StyleSheet } from 'react-native'
+import { Text, View, TouchableOpacity, StyleSheet, Platform } from 'react-native'
 import Colors from '../constants/Colors'
 import Layout from '../constants/Layout'
 import { Ionicons } from '@expo/vector-icons'
@@ -118,8 +118,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         marginHorizontal: 5,
-        borderWidth: 1,
-        paddingVertical: 12,
+        paddingVertical: Platform.OS === 'ios' ? 0 : 12,
         borderRadius: 5,
     },
 
