@@ -9,9 +9,7 @@ npm-debug.*
 *.orig.*
 web-build/
 web-report/
-data
-ftp
-borrar.json
+constants/ApiKeys.js
 
 # macOS
 .DS_Store

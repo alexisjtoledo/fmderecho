@@ -1,4 +1,4 @@
-import { AppLoading } from 'expo'
+import { AppLoading, Notifications } from 'expo'
 import { Asset } from 'expo-asset'
 import * as Font from 'expo-font'
 import React, { useState, useEffect } from 'react'
@@ -9,8 +9,70 @@ import AppNavigator from './navigation/AppNavigator'
 import OnboardingScreen from './screens/OnboardingScreen'
 import AsyncStorage from '@react-native-community/async-storage'
 
+import * as Permissions from 'expo-permissions'
+import ApiKeys from './constants/ApiKeys'
+import * as Firebase from 'firebase/app'
+import 'firebase/firestore'
+import 'firebase/auth'
+import { decode, encode } from 'base-64'
+
+if (!global.btoa) {
+    global.btoa = encode
+}
+
+if (!global.atob) {
+    global.atob = decode
+} 
+
 export default function App(props) {
+
     const [isLoadingComplete, setLoadingComplete] = useState(false);
+
+    useEffect(() => {
+        // Inicializo Firebase
+        if(!Firebase.apps.length) {
+            Firebase.initializeApp(ApiKeys.firebaseConfig);
+        }
+        // Inicializo el proceso de generación de token
+        getToken();
+    }, []);
+
+    /** 
+     * Función para generar el token de notificaciones push
+    */
+    const getToken = async () => {
+        // Primero consulto si tengo autorización para recibir notificaciones
+        const { status: existingStatus } = await Permissions.getAsync(Permissions.NOTIFICATIONS);
+        let finalStatus = existingStatus;
+        // Si no la tengo, la pido
+        if(existingStatus !== 'granted') {
+            const { status } = await Permissions.askAsync(Permissions.NOTIFICATIONS);
+            finalStatus = status;
+        }
+        // Si no me dio permiso, devulevo un undefined
+        if (finalStatus !== 'granted') {
+            return;
+        }
+        // Si dio permiso, guardo su token
+        let token = await Notifications.getExpoPushTokenAsync();
+        // Y lo envío a la base de datos
+        loginAnon(token);
+    }
+    
+    /** 
+     * Función para autenticar anónimamente al usuario en Firebase
+     * @param { String } token Recibe como parámetro el token para notificaciones push
+    */
+    const loginAnon = async token => {
+        await Firebase.auth().signInAnonymously().catch(err => console.log(err));
+        await Firebase.auth().onAuthStateChanged(async user => {
+            console.log('Autenticación: ', user.uid, '\nToken: ', token);
+            await Firebase.firestore().collection('users').add({
+                created_by: user.uid,
+                push_token: token,
+            }).catch(error => console.log(error));
+        });
+    }
 
     /**
      * Función para verificar si es la primera vez que entro a la App
@@ -44,6 +106,9 @@ export default function App(props) {
     }
 }
 
+/** 
+ * Función para precargar los assets más importantes
+*/
 async function loadResourcesAsync() {
     await Promise.all([
         Asset.loadAsync([
