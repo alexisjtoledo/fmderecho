@@ -37,7 +37,8 @@
         "backgroundColor": "#5B1F53",
         "backgroundImage": "./assets/images/android_icon_bg.png",
         "foregroundImage": "./assets/images/android_icon.png"
-      }
+      },
+      "useNextNotificationsApi": true
     }
   }
 }
