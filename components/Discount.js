@@ -41,7 +41,7 @@ export default class Discount extends Component {
                                 size={10}
                             />
                             &nbsp;
-                            Tiempo restante: {this.props.data.until}
+                            Válido hasta: {this.props.data.until === '-' ? 'Sin vencimiento' : this.props.data.until}
                         </Text>
                         <View style={styles.tagsContainer}>
                             <Text style={styles.tagsText}>

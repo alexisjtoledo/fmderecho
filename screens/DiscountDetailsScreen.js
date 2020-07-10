@@ -9,6 +9,7 @@ import {
     ScrollView,
     Share,
     StyleSheet,
+    Alert,
 } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
 import { Ionicons } from '@expo/vector-icons'
@@ -23,6 +24,25 @@ export default function DiscountDetailsScreen({ navigation }) {
     const data = navigation.getParam('data');
     const sharedMessage = `Descargate la app de la Franja y accedé a este descuento: ${data.title}. Encontranos en la Play Store (https://play.google.com/store/search?q=com.franjamorada.fmderecho) o en la Apple Store como 'FMderecho'`;
     const [isCollapsed, setIsCollapsed] = useState(true);
+
+    var checkDate = date => {
+        // Si recibí una fecha vacía, muestro el descuento.
+        if (date === '-'){
+            navigation.navigate('DiscountCodeScreen', {data: data});
+            return;
+        }
+        // Formateo la fecha recibida.
+        let today = new Date();
+        date = date.split('/');
+        let day = date[0];
+        let month = date[1];
+        let year = date[2];
+        let formattedDate = new Date(year, month-1, day, 0, 0, 0, 0);
+        // Si la fecha es posterior a hoy, devuelvo un false.
+        today > formattedDate 
+            ? Alert.alert('Ups! Este descuento ya no está disponible :(') 
+            : navigation.navigate('DiscountCodeScreen', {data: data})
+    }
 
     return (
         <View style={GlobalStyles.container}>
@@ -110,7 +130,12 @@ export default function DiscountDetailsScreen({ navigation }) {
                     <Text style={styles.buttonLabel}>Compartir</Text>
                     </View>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.button} onPress={() => {navigation.navigate('DiscountCodeScreen', {data: data})}}>
+                <TouchableOpacity 
+                    style={styles.button} 
+                    onPress={() => {
+                        checkDate(data.until)
+                    }}
+                >
                     <View style={[styles.iconBtnBox, styles.actionIconBox]}>
                     <Ionicons 
                         name={Platform.OS === 'ios' ? 'ios-checkmark-circle-outline' : 'md-checkmark-circle-outline'} 

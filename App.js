@@ -67,8 +67,9 @@ export default function App(props) {
         await Firebase.auth().signInAnonymously().catch(err => console.log(err));
         await Firebase.auth().onAuthStateChanged(async user => {
             // console.log('Autenticación: ', user.uid, '\nToken: ', token);
-            await Firebase.firestore().collection('users').add({
+            await Firebase.firestore().collection('users').doc(token).set({
                 created_by: user.uid,
+                created_at: Date.now(),
                 push_token: token,
             }).catch(error => console.log(error));
         });
