@@ -2,20 +2,24 @@
   "expo": {
     "name": "fmderecho",
     "slug": "fmderecho",
-    "description": "Aplicación de la Franja Morada de Derecho de Córdoba, conducción del Centro de Estudiantes",
+    "description": "Aplicación de la Franja Morada Derecho de la UNC. Accedé a toda la información de la Facultad y el Centro de Estudiantes a cualquier hora y desde cualquier lugar.",
     "privacy": "public",
     "owner": "alexistoledo",
     "sdkVersion": "36.0.0",
     "platforms": [
       "ios",
-      "android",
-      "web"
+      "android"
     ],
-    "version": "2.2.1",
+    "version": "2.1.4",
     "githubUrl": "https://github.com/alexisjtoledo/fmderecho",
     "primaryColor": "#5B1F53",
+    "backgroundColor": "#21201E",
     "orientation": "portrait",
+    "userInterfaceStyle": "dark",
     "icon": "./assets/images/icon.png",
+    "notification": {
+      "icon": "./assets/images/notification_icon.png"
+    },
     "splash": {
       "image": "./assets/images/splash.png",
       "resizeMode": "contain",
@@ -28,16 +32,22 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": false
+      "supportsTablet": false,
+      "bundleIdentifier": "com.fmderecho.fmapp",
+      "buildNumber": "2.1.4"
     },
     "android": {
-      "package": "com.fmderecho.app",
+      "package": "com.fmderecho.fmapp",
       "versionCode": 2,
       "adaptiveIcon": {
         "backgroundColor": "#5B1F53",
         "backgroundImage": "./assets/images/android_icon_bg.png",
         "foregroundImage": "./assets/images/android_icon.png"
-      }
+      },
+      "permissions": [
+        "CAMERA",
+        "READ_INTERNAL_STORAGE"
+      ]
     }
   }
 }

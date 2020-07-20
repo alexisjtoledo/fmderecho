@@ -112,7 +112,7 @@ export default function StoriesScreen({ navigation }) {
                                 <Ionicons 
                                     name={'ios-arrow-back'} 
                                     size={30} 
-                                    color={Colors.textColor}
+                                    color={Colors.secondary}
                                 />
                                 <Text style={styles.modalHeaderTitle}>
                                     {name}
@@ -260,6 +260,7 @@ const styles = StyleSheet.create({
         lineHeight: Platform.OS === 'ios' ? 35 : 36, // Text Vertical Align iOS
         textAlignVertical: 'center', // Text Vertical Align Android
         marginLeft: 10,
+        marginRight: 16,
     },
 
     // Contenido (modal)

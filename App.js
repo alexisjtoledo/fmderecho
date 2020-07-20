@@ -2,13 +2,12 @@ import { AppLoading, Notifications } from 'expo'
 import { Asset } from 'expo-asset'
 import * as Font from 'expo-font'
 import React, { useState, useEffect } from 'react'
-import { Platform, StatusBar, StyleSheet, View, Image } from 'react-native'
+import { Platform, StatusBar, StyleSheet, View, Image, Alert } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
 import Color from './constants/Colors'
 import AppNavigator from './navigation/AppNavigator'
 import OnboardingScreen from './screens/OnboardingScreen'
 import AsyncStorage from '@react-native-community/async-storage'
-
 import * as Permissions from 'expo-permissions'
 import ApiKeys from './constants/ApiKeys'
 import * as Firebase from 'firebase/app'
@@ -35,11 +34,20 @@ export default function App(props) {
         }
         // Inicializo el proceso de generación de token
         getToken();
+        this.listener = Notifications.addListener(incomingNotification);
     }, []);
+
+    var incomingNotification = ({ origin, data }) => {
+        console.log('ORIGEN:',origin,'DATOS:',data);
+        // origin === 'selected'
+        //     ? <UsefulLinksScreen />
+        //     : Alert.alert('Tenés una nueva notificación.');
+        // VER ABRIR APPNAVIGATOR CON PARAMETRO Y SI ESTÁ EL PARAMETRO, ABRIR PANTALLA.
+    }
 
     /** 
      * Función para generar el token de notificaciones push
-    */
+     */
     const getToken = async () => {
         // Primero consulto si tengo autorización para recibir notificaciones
         const { status: existingStatus } = await Permissions.getAsync(Permissions.NOTIFICATIONS);
@@ -62,7 +70,7 @@ export default function App(props) {
     /** 
      * Función para autenticar anónimamente al usuario en Firebase
      * @param { String } token Recibe como parámetro el token para notificaciones push
-    */
+     */
     const loginAnon = async token => {
         await Firebase.auth().signInAnonymously().catch(err => console.log(err));
         await Firebase.auth().onAuthStateChanged(async user => {
@@ -109,7 +117,7 @@ export default function App(props) {
 
 /** 
  * Función para precargar los assets más importantes
-*/
+ */
 async function loadResourcesAsync() {
     await Promise.all([
         Asset.loadAsync([

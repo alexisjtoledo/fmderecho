@@ -12,6 +12,7 @@ import {
 } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
 import Colors from '../constants/Colors'
+import Constants from 'expo-constants'
 import Layout from '../constants/Layout'
 
 export default class Procedure extends Component {
@@ -92,83 +93,60 @@ export default class Procedure extends Component {
                 {/* Inicio del modal */}
                 <Modal
                     visible={this.state.modalVisible}
-                    animationType={'fade'}
+                    animationType={'slide'}
                     onRequestClose={() => this.closeModal()}
-                    transparent={true}
+                    transparent={false}
                 >
                     {/* Al abrir un elemento lo muestro en forma de modal que recibe la información que previamente almacené en el estado. */}
-                    <View style={styles.modalContainer}>
-                        <View>
+                    {/* <View style={styles.modalContainer}> */}
 
-                            {/* CONDICIONAL: Si hay un enlace asignado, muestro el botón || Solo en Android */}
-                            {this.state.modalBtnAction === '-' ? (
-                                <View style={styles.buttonContainer}>
-                                    <View style={styles.modalCloseContainer}>
-                                        <TouchableOpacity
-                                            onPress={() => {
-                                                this.closeModal();
-                                            }}
-                                            style={styles.modalCloseBtn}
-                                        >
-                                            <Text style={styles.modalBtnText}>
-                                                CERRAR
-                                            </Text>
-                                        </TouchableOpacity>
-                                    </View>
-                                </View>
+                    {/* Contenedor principal del Modal */}
+                    <ScrollView style={styles.modalBackGround} stickyHeaderIndices={[0]}>
 
-                            ) : (
+                        {/* Cabecera del modal */}
+                        <View style={styles.modalHeader}>
 
-                                <View style={styles.buttonContainer}>
-                                    <View style={styles.modalActionContainer}>
-                                        <TouchableOpacity
-                                            onPress={() =>
-                                                this.props.actionPressed(
-                                                    this.state.modalBtnLink
-                                                )
-                                            }
-                                            style={styles.modalActionBtn}
-                                        >
-                                            <Text style={styles.modalBtnText}>
-                                                {this.state.modalBtnAction}
-                                            </Text>
-                                        </TouchableOpacity>
-                                    </View>
-                                    <View style={styles.modalCloseContainer}>
-                                        <TouchableOpacity
-                                            onPress={() => {
-                                                this.closeModal();
-                                            }}
-                                            style={styles.modalCloseBtn}
-                                        >
-                                            <Ionicons
-                                                name={'ios-close'}
-                                                size={50}
-                                                color='#FFFFFF'
-                                            />
-                                        </TouchableOpacity>
-                                    </View>
-                                </View>
-                            )}
-                            {/* Fin del CONDICIONAL */}
-
-                            {/* Contenido principal del modal */}
-                            <View style={styles.modalMainContainer}>
-                                <View style={styles.modalTitleContainer}>
-                                    <Text style={styles.modalTitle}>
+                            {/* Botón volver */}
+                            <TouchableOpacity
+                                onPress={() => this.closeModal()}
+                                style={styles.modalBackButton} 
+                            >
+                                    <Ionicons 
+                                        name={'ios-arrow-back'} 
+                                        size={30} 
+                                        color={Colors.secondary}
+                                    />
+                                    <Text style={styles.modalHeaderTitle}>
                                         {this.state.modalTitle}
                                     </Text>
-                                </View>
-                                <ScrollView style={styles.modalTextContainer}>
-                                    <Text style={styles.modalText}>
-                                        {this.state.modalText}
-                                    </Text>
-                                </ScrollView>
-                            </View>
-                            {/* Fin del contenido principal del modal */}
-
+                            </TouchableOpacity>
                         </View>
-                    </View>
+
+                        {/* Contenido del modal */}
+                        <Text style={styles.modalText}>
+                            {this.state.modalText}
+                        </Text>
+
+                    </ScrollView>
+
+                    {/* CONDICIONAL: Si hay un enlace asignado, muestro el botón || Solo en Android */}
+                    {this.state.modalBtnAction === '-' 
+                        ? null 
+                        : <TouchableOpacity
+                            onPress={() =>
+                                this.props.actionPressed(
+                                    this.state.modalBtnLink
+                                )
+                            }
+                            style={styles.modalActionBtn}
+                        >
+                            <Text style={styles.modalBtnText}>
+                                {this.state.modalBtnAction}
+                            </Text>
+                        </TouchableOpacity>
+                    }
+                    {/* Fin del CONDICIONAL */}
+
                 </Modal>
                 {/* Fin del modal */}
             </View> // Fin del trámite
@@ -203,109 +181,71 @@ const styles = StyleSheet.create({
         width: 200,
     },
 
-    // Contenedor (modal)
-    modalContainer: {
-        flex: 1,
-        backgroundColor: 'rgba(33,32,30,0.7)',
-        padding: 30,
-        minHeight: Layout.window.height,
-        minWidth: Layout.window.width,
+    // Contenedor principal (modal)
+    modalBackGround: {
+        backgroundColor: 'rgba(33,32,30,0.95)',
     },
 
-    // Botonera (modal)
-    buttonContainer: {
+    // Cabecera (modal)
+    modalHeader: {
+        top: 0,
+        paddingTop: Platform.OS === 'ios' ? Constants.statusBarHeight + 10 : 10,
+        paddingBottom: 10,
+        paddingHorizontal: 16,
+        backgroundColor: Colors.backgroundColor,
+        borderBottomColor: '#282828',
+        borderBottomWidth: 2,
+    },
+
+    // Botón volver (modal)
+    modalBackButton: {
+        minHeight: 40,
+        alignItems: 'center',
         flex: 1,
         flexDirection: 'row',
-        alignItems: 'flex-end',
-        zIndex: 10,
     },
 
-    // Contenedor de botón de cierre (modal)
-    modalCloseContainer: {
-        zIndex: 12,
-        height: 60,
-        flexGrow: 1,
-        top: (Layout.window.height / 8) * 7,
-        alignSelf: 'flex-end',
-        marginHorizontal: 10,
-        marginBottom: 10,
+    // Título de la cabecera (modal)
+    modalHeaderTitle: {
+        color: Colors.textColor,
+        fontSize: 20,
+        fontWeight: 'bold',
+        height: 40,
+        lineHeight: Platform.OS === 'ios' ? 35 : 36, // Text Vertical Align iOS
+        textAlignVertical: 'center', // Text Vertical Align Android
+        marginLeft: 10,
+        marginRight: 16,
     },
 
-    // Botón de cierre (modal)
-    modalCloseBtn: {
+    // Contenido (modal)
+    modalText: {
+        fontSize: 14,
+        color: Colors.textColor,
+        paddingTop: 10,
+        paddingBottom: Constants.statusBarHeight,
+        paddingHorizontal: 16,
+    },
+
+    // Botón de acción
+    modalActionBtn: {
+        minHeight: 70,
+        maxHeight: 70,
+        width: Layout.window.width + 20,
+        marginLeft: -10,
         flex: 1,
-        flexGrow: 1,
-        alignItems: 'center',
+        backgroundColor: Colors.backgroundColor,
         justifyContent: 'center',
-        backgroundColor: 'rgba(222,90,93,0.8)',
-        borderColor: '#de5a5d',
+        alignItems: 'center',
+        borderTopColor: Colors.lighterBackground,
         borderWidth: 2,
-        borderRadius: 15,
     },
 
-    // Texto de botón (modal)
+    // Texto del botón de acción
     modalBtnText: {
         color: Colors.textColor,
-        fontSize: 15,
-        fontWeight: 'bold',
+        fontSize: 16,
         textTransform: 'uppercase',
-    },
-
-    // Contenedor del botón de acción (modal)
-    modalActionContainer: {
-        zIndex: 2,
-        height: 60,
-        flexGrow: 3,
-        top: (Layout.window.height / 8) * 7,
-        alignSelf: 'flex-end',
-        marginLeft: 10,
-        marginBottom: 10,
-    },
-
-    // Botón de acción (modal)
-    modalActionBtn: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: 'rgba(69,176,143,0.8)',
-        borderColor: '#45b08f',
-        borderWidth: 2,
-        borderRadius: 15,
-    },
-
-    // Contenedor principal (modal)
-    modalMainContainer: {
-        backgroundColor: '#4f4c47',
-        height: (Layout.window.height / 8) * 7,
-        width: (Layout.window.width / 8) * 7,
-    },
-
-    // Contenedor del título (modal)
-    modalTitleContainer: {
-        backgroundColor: Colors.backgroundColor,
-        padding: 16,
-        borderWidth: 1,
-        borderColor: Colors.textColor,
-    },
-
-    // Texto del título (modal)
-    modalTitle: {
         fontWeight: 'bold',
-        color: Colors.textColor,
-        fontSize: 18,
-    },
-
-    // Contenedor del texto (modal)
-    modalTextContainer: {
-        padding: 16,
-        borderWidth: 1,
-        borderTopWidth: 0,
-        borderColor: Colors.textColor,
-    },
-
-    // Texto (modal)
-    modalText: {
-        color: Colors.textColor,
-        paddingBottom: Layout.window.height / 8,
+        paddingBottom: Platform.OS === 'ios' ? 10 : 0,
     },
 })
