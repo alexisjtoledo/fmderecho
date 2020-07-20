@@ -39,10 +39,7 @@ export default function App(props) {
 
     var incomingNotification = ({ origin, data }) => {
         console.log('ORIGEN:',origin,'DATOS:',data);
-        // origin === 'selected'
-        //     ? <UsefulLinksScreen />
-        //     : Alert.alert('Tenés una nueva notificación.');
-        // VER ABRIR APPNAVIGATOR CON PARAMETRO Y SI ESTÁ EL PARAMETRO, ABRIR PANTALLA.
+        // MANEJAR NOTIFICACIONES
     }
 
     /** 
