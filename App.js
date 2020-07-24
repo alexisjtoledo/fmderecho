@@ -14,6 +14,7 @@ import * as Firebase from 'firebase/app'
 import 'firebase/firestore'
 import 'firebase/auth'
 import { decode, encode } from 'base-64'
+import * as Updates from 'expo-updates'
 
 if (!global.btoa) {
     global.btoa = encode
@@ -36,6 +37,9 @@ export default function App(props) {
         // Inicializo el proceso de generación de token
         getToken();
         checkFirstTime();
+        if(!firstTime) {
+            checkForUpdates();
+        }
         this.listener = Notifications.addListener(incomingNotification);
     }, []);
 
@@ -48,6 +52,28 @@ export default function App(props) {
             setFirstTime(true);
         } else {
             setFirstTime(false);
+        }
+    }
+
+    /**
+     * Función para revisar si hay algún update vía OTA.
+     */
+    const checkForUpdates = async () => {
+        try {
+            const update = await Updates.checkForUpdateAsync();
+            if (update.isAvailable) {
+            await Updates.fetchUpdateAsync();
+            Alert.alert(
+                "Actualizando...",
+                "La app se reiniciará durante un segundo para actualizarse, no necesitás hacer nada :)",
+                [
+                { text: "OK", onPress: () => Updates.reloadAsync() }
+                ],
+            { cancelable: false }
+            );
+        }
+        } catch (e) {
+            console.log(e);
         }
     }
 
