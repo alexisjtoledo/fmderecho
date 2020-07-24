@@ -14,6 +14,8 @@ import * as Firebase from 'firebase/app'
 import 'firebase/firestore'
 import 'firebase/auth'
 import { decode, encode } from 'base-64'
+import * as Updates from 'expo-updates'
+import { AppState } from 'react-native'
 
 if (!global.btoa) {
     global.btoa = encode
@@ -29,6 +31,7 @@ export default function App(props) {
     const [firstTime, setFirstTime] = useState(true);
 
     useEffect(() => {
+        checkForUpdates();
         // Inicializo Firebase
         if(!Firebase.apps.length) {
             Firebase.initializeApp(ApiKeys.firebaseConfig);
@@ -39,6 +42,9 @@ export default function App(props) {
         this.listener = Notifications.addListener(incomingNotification);
     }, []);
 
+    /**
+     * Función para chequear si es la primera vez.
+     */
     const checkFirstTime = async () => {
         if(await AsyncStorage.getItem('firstTime') === null) {
             await AsyncStorage.setItem('firstTime', 'true');
@@ -48,6 +54,27 @@ export default function App(props) {
         }
     }
 
+    /**
+     * Función para revisar si hay algún update vía OTA.
+     */
+    const checkForUpdates = async () => {
+        try {
+            const update = await Updates.checkForUpdateAsync();
+            if (update.isAvailable) {
+            await Updates.fetchUpdateAsync();
+            Alert.alert(
+                "Actualizando...",
+                "La app se reiniciará durante un segundo para actualizarse, no necesitás hacer nada :)",
+                [
+                { text: "OK", onPress: () => Updates.reloadAsync() }
+                ],
+            { cancelable: false }
+            );
+        }
+        } catch (e) {
+            console.log(e);
+        }
+    }
 
     /** 
      * TODO: Función para manejar las notificaciones recibidas.

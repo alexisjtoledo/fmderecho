@@ -46,24 +46,24 @@ export default class HomeScreenHeader extends Component {
                     </Text>
                     {/* Segundo elemento del menú */}
                     <Text
+                        onPress={() => this.handlePress('TweetsScreen', 'Academics')}
+                        style={styles.btnMenu}
+                    >
+                        Académicas
+                    </Text>
+                    {/* Tercer elemento del menú */}
+                    <Text
                         onPress={() => this.handlePress('TweetsScreen', 'Inclusion')}
                         style={styles.btnMenu}
                     >
                         Inclusión
                     </Text>
-                    {/* Tercer elemento del menú */}
+                    {/* Cuarto elemento del menú */}
                     <Text
                         onPress={() => this.handlePress('TweetsScreen', 'Rights')}
                         style={styles.btnMenu}
                     >
                         Derechos
-                    </Text>
-                    {/* Cuarto elemento del menú */}
-                    <Text
-                        onPress={() => this.handlePress('TweetsScreen', 'Academics')}
-                        style={styles.btnMenu}
-                    >
-                        Académicas
                     </Text>
                 </ScrollView>
             </View> // Fin de la Cabecera

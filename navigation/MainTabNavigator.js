@@ -96,7 +96,7 @@ const ProgramsStack = createStackNavigator(
 );
 
 ProgramsStack.navigationOptions = {
-  tabBarLabel: 'Programas',
+  tabBarLabel: 'Biblioteca',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-filing' : 'md-filing'} />
   ),

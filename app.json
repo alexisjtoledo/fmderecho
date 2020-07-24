@@ -10,7 +10,7 @@
       "ios",
       "android"
     ],
-    "version": "3.1.2",
+    "version": "3.1.4",
     "githubUrl": "https://github.com/alexisjtoledo/fmderecho",
     "primaryColor": "#5B1F53",
     "backgroundColor": "#21201E",
@@ -40,7 +40,7 @@
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "com.fmderecho.fmapp",
-      "buildNumber": "3.1.2"
+      "buildNumber": "3.1.4"
     },
     "android": {
       "package": "com.fmderecho.fmapp",

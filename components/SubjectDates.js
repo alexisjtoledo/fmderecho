@@ -230,7 +230,7 @@ export default class SubjectDates extends Component {
                             <Ionicons
                                 name={Platform.OS === 'ios' ? 'ios-git-network' : 'md-git-network'}
                                 size={16}
-                                color={Colors.textColor}
+                                color={Colors.lighterPrimary}
                             />
                         </View>
                     </TouchableOpacity>
@@ -245,6 +245,7 @@ const styles = StyleSheet.create({
 
     // Contenedor de materia
     subjectBox: {
+        backgroundColor: 'rgba(253,246,249,0.8)',
         flex: 1,
         flexDirection: 'row',
         marginBottom: 10,
@@ -252,8 +253,6 @@ const styles = StyleSheet.create({
         paddingVertical: 20,
         paddingHorizontal: 20,
         borderRadius: 10,
-        borderColor: Colors.textColor,
-        borderWidth: 1,
         // overflow: 'hidden',
     },
 
@@ -265,7 +264,7 @@ const styles = StyleSheet.create({
 
     // Texto de materia
     subjectText: {
-        color: Colors.textColor,
+        color: Colors.primary,
         fontSize: 18,
         fontWeight: 'bold',
         marginBottom: 10,
@@ -273,14 +272,14 @@ const styles = StyleSheet.create({
 
     // Subtitulos
     subtitleText: {
-        color: Colors.textColor,
+        color: Colors.primary,
         fontSize: 10,
         fontWeight: 'bold',
         textAlign: 'center',
         marginTop: 10,
         paddingVertical: 5,
-        backgroundColor: 'rgba(255,255,255,0.1)',
-        borderColor: Colors.textColor,
+        backgroundColor: 'rgba(0,0,0,0.1)',
+        borderColor: Colors.primary,
         borderWidth: 1,
     },
 
@@ -293,21 +292,21 @@ const styles = StyleSheet.create({
     // Examen
     exam: {
         flexGrow: 1,
-        borderColor: Colors.textColor,
+        borderColor: Colors.primary,
         borderWidth: 1,
         marginBottom: 5,
     },
 
     // Texto de mesa vencida
     passedExamText: {
-        color: 'rgba(255,255,255,0.3)',
+        color: 'rgba(91,31,83,0.3)',
         textAlign: 'center',
         paddingVertical: 5,
     },
 
     // Texto de mesa vigente
     examText: {
-        color: Colors.textColor,
+        color: Colors.primary,
         textAlign: 'center',
         paddingVertical: 5,
     },
@@ -320,8 +319,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         borderRadius: 8,
         marginLeft: 5,
-        borderColor: 'rgba(50,195,190,1)',
-        backgroundColor: 'rgba(50,195,190,0.1)',
+        borderColor: 'rgba(91,31,83,1)',
+        backgroundColor: 'rgba(91,31,83,0.1)',
         borderWidth: 1,
         width: 155,
         height: 30,
@@ -330,7 +329,7 @@ const styles = StyleSheet.create({
 
     // Texto del botón
     btnText: {
-        color: Colors.textColor,
+        color: Colors.primary,
         fontSize: 10,
         fontWeight: 'bold',
         paddingTop: -1,
@@ -344,8 +343,8 @@ const styles = StyleSheet.create({
         height: 30,
         alignItems: 'center',
         justifyContent: 'center',
-        borderColor: 'rgba(50,195,190,1)',
-        backgroundColor: 'rgba(50,195,190,0.3)',
+        borderColor: 'rgba(91,31,83,1)',
+        backgroundColor: 'rgba(91,31,83,0.3)',
         borderWidth: 1,
     },
 })

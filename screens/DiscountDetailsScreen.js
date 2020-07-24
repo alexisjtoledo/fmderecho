@@ -122,7 +122,7 @@ export default function DiscountDetailsScreen({ navigation }) {
                     <View style={[styles.iconBtnBox, styles.shareIconBox]}>
                     <Ionicons 
                         name={Platform.OS === 'ios' ? 'ios-share' : 'md-share'} 
-                        size={30}
+                        size={Layout.window.width > 400 ? 30 : 25}
                         color={Colors.textColor}
                     />
                     </View>
@@ -139,7 +139,7 @@ export default function DiscountDetailsScreen({ navigation }) {
                     <View style={[styles.iconBtnBox, styles.actionIconBox]}>
                     <Ionicons 
                         name={Platform.OS === 'ios' ? 'ios-checkmark-circle-outline' : 'md-checkmark-circle-outline'} 
-                        size={30}
+                        size={Layout.window.width > 400 ? 30 : 25}
                         color={Colors.textColor}
                     />
                     </View>
@@ -262,10 +262,11 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
         alignItems: 'center',
-        marginHorizontal: 16,
+        paddingHorizontal: Layout.window.width > 400 ? 16 : 20,
         justifyContent: 'space-between',
         maxHeight: 70,
         minHeight: 70,
+        width: '100%',
     },
 
     // Botones
@@ -276,8 +277,8 @@ const styles = StyleSheet.create({
 
     // Contenedor del ícono (gral)
     iconBtnBox: {
-        width: 50,
-        height: 50,
+        width: Layout.window.width > 400 ? 50 : 40,
+        height: Layout.window.width > 400 ? 50 : 40,
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -304,8 +305,8 @@ const styles = StyleSheet.create({
     
     // Contenedor del texto (gral)
     textBtnBox: {
-        width: 135,
-        height: 50,
+        width: Layout.window.width > 400 ? 135 : 120,
+        height: Layout.window.width > 400 ? 50 : 40,
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -331,9 +332,9 @@ const styles = StyleSheet.create({
     // Texto
     buttonLabel: {
         color: Colors.textColor,
-        paddingHorizontal: 20,
+        paddingHorizontal: Layout.window.width > 400 ? 20 : 10,
         paddingVertical: 10,
-        fontSize: 14,
+        fontSize: Layout.window.width > 400 ? 14 : 12,
         fontWeight: 'bold',
         textTransform: 'uppercase',
     },
