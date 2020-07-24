@@ -26,6 +26,7 @@ if (!global.atob) {
 export default function App(props) {
 
     const [isLoadingComplete, setLoadingComplete] = useState(false);
+    const [firstTime, setFirstTime] = useState(true);
 
     useEffect(() => {
         // Inicializo Firebase
@@ -34,12 +35,25 @@ export default function App(props) {
         }
         // Inicializo el proceso de generación de token
         getToken();
+        checkFirstTime();
         this.listener = Notifications.addListener(incomingNotification);
     }, []);
 
-    var incomingNotification = ({ origin, data }) => {
+    const checkFirstTime = async () => {
+        if(await AsyncStorage.getItem('firstTime') === null) {
+            await AsyncStorage.setItem('firstTime', 'true');
+            setFirstTime(true);
+        } else {
+            setFirstTime(false);
+        }
+    }
+
+
+    /** 
+     * TODO: Función para manejar las notificaciones recibidas.
+     */
+    const incomingNotification = ({ origin, data }) => {
         console.log('ORIGEN:',origin,'DATOS:',data);
-        // MANEJAR NOTIFICACIONES
     }
 
     /** 
@@ -79,19 +93,6 @@ export default function App(props) {
             }).catch(error => console.log(error));
         });
     }
-
-    /**
-     * Función para verificar si es la primera vez que entro a la App
-     * @returns { Bool } 
-     */
-    var firstTime = async () => {
-            let value = await AsyncStorage.getItem('firstTime');
-            if (value === 'false') {
-                return false
-            } else {
-                return true
-            }
-        }
 
     if (!isLoadingComplete && !props.skipLoadingScreen) {
         return (
@@ -160,9 +161,6 @@ function handleLoadingError(error) {
 
 async function handleFinishLoading(setLoadingComplete) {
     setLoadingComplete(true);
-    // Al terminar de cargar la app, inicializo la variable en el almacenamiento
-    // persistente para que no hay ningún problema.
-    await AsyncStorage.setItem('firstTime', 'true');
 }
 
 // Estilos principales

@@ -4,7 +4,8 @@ import {
     Image,
     ScrollView,
     Text,
-    StyleSheet
+    StyleSheet,
+    Platform
 } from 'react-native'
 import Constants from 'expo-constants'
 import Colors from '../constants/Colors'
@@ -79,8 +80,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: 'rgba(33,32,30,0.3)',
         paddingBottom: 10,
-        paddingTop: Constants.statusBarHeight + 10,
-        top: - Constants.statusBarHeight,
+        paddingTop: Platform.OS === 'ios' ? Constants.statusBarHeight + 10 : 10,
+        top: Platform.OS === 'ios' ? - Constants.statusBarHeight : null,
         zIndex: 2,
     },
 

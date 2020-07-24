@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import {
     View,
     Image,
-    StyleSheet
+    StyleSheet,
+    Platform
 } from 'react-native'
 import MainPicture from '../assets/images/main-picture.png'
 import Layout from '../constants/Layout'
@@ -29,7 +30,7 @@ const styles = StyleSheet.create({
     container: {
         width: Layout.window.width,
         height: 450,
-        marginTop: - (Constants.statusBarHeight + 132),
+        marginTop: Platform.OS === 'ios' ? - (Constants.statusBarHeight + 132) : -132,
         marginBottom: 15,
     },
 

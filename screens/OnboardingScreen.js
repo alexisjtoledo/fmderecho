@@ -70,9 +70,9 @@ export default class OnboardingScreen extends Component {
      * @memberof OnboardingScreen
      */
     _onDone = async () => {
-        this.setState({ showRealApp: true })
+        this.setState({ showRealApp: true });
         // Una vez cerrado el onboarding, guardo una variable persistente que me indique que ya se ha visto.
-        await AsyncStorage.setItem('firstTime', 'false')
+        await AsyncStorage.setItem('firstTime', 'false');
     }
     
     /**

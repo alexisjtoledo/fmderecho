@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native' // Importo hojas de estilo
+import { StyleSheet, Platform } from 'react-native' // Importo hojas de estilo
 import Constants from 'expo-constants' // Importo constantes de expo
 import Layout from './Layout' // Importo diseños
 import Colors from './Colors' // Importo colores
@@ -9,7 +9,7 @@ export default StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: Colors.backgroundColor,
-        paddingTop: Platform.OS === 'ios' ? Constants.statusBarHeight : null,
+        paddingTop: Platform.OS === 'ios' ? Constants.statusBarHeight : 0,
         maxHeight: Layout.window.height,
         minWidth: Layout.window.width,
     },
