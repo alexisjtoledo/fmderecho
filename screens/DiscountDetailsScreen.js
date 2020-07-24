@@ -22,7 +22,7 @@ import Layout from '../constants/Layout'
 export default function DiscountDetailsScreen({ navigation }) {
 
     const data = navigation.getParam('data');
-    const sharedMessage = `Descargate la app de la Franja y accedé a este descuento: ${data.title}. Encontranos en la Play Store (https://play.google.com/store/search?q=com.franjamorada.fmderecho) o en la Apple Store como 'FMderecho'`;
+    const sharedMessage = `Descargate la app de la Franja y accedé a este descuento: ${data.title}. Encontranos en la Play Store (https://play.google.com/store/apps/details?id=com.fmderecho.fmapp) o en la Apple Store como 'FMderecho'`;
     const [isCollapsed, setIsCollapsed] = useState(true);
 
     var checkDate = date => {
