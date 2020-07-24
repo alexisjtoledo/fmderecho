@@ -7,6 +7,7 @@ import {
 } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
 import Colors from '../constants/Colors'
+import Layout from '../constants/Layout'
 
 export default class Dependency extends Component {
 
@@ -238,7 +239,7 @@ const styles = StyleSheet.create({
 
     // Texto del contenido opcional
     optionalText: {
-        fontSize: 11,
+        fontSize: Layout.window.width < 400 ? 9.5 : 11,
         color: '#DDDDDD',
     },
 

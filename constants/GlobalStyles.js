@@ -10,7 +10,6 @@ export default StyleSheet.create({
         flex: 1,
         backgroundColor: Colors.backgroundColor,
         paddingTop: Platform.OS === 'ios' ? Constants.statusBarHeight : 0,
-        maxHeight: Layout.window.height,
         minWidth: Layout.window.width,
     },
 

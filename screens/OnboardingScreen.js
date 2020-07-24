@@ -6,6 +6,7 @@ import { Ionicons } from '@expo/vector-icons'
 import Layout from '../constants/Layout'
 import Colors from '../constants/Colors'
 import AsyncStorage from '@react-native-community/async-storage'
+import {Restart} from 'fiction-expo-restart'
 
 /**
  * CONTENIDO DE LOS SLIDES
@@ -73,6 +74,7 @@ export default class OnboardingScreen extends Component {
         this.setState({ showRealApp: true });
         // Una vez cerrado el onboarding, guardo una variable persistente que me indique que ya se ha visto.
         await AsyncStorage.setItem('firstTime', 'false');
+        Restart();
     }
     
     /**
