@@ -31,7 +31,6 @@ export default function App(props) {
     const [firstTime, setFirstTime] = useState(true);
 
     useEffect(() => {
-        checkForUpdates();
         // Inicializo Firebase
         if(!Firebase.apps.length) {
             Firebase.initializeApp(ApiKeys.firebaseConfig);
@@ -40,6 +39,7 @@ export default function App(props) {
         getToken();
         checkFirstTime();
         this.listener = Notifications.addListener(incomingNotification);
+        checkForUpdates();
     }, []);
 
     /**

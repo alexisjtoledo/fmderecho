@@ -63,7 +63,7 @@ export default class SubjectDates extends Component {
                         PARCIALES
                     </Text>
                     <View style={styles.exams}>
-                        <View style={styles.exam}>
+                        <View style={[styles.exam, {borderRightWidth: 0}]}>
                             <Text
                                 style={
                                     this.formatDate(this.props.data.parc1) < this.state.today
@@ -74,7 +74,7 @@ export default class SubjectDates extends Component {
                                 1º: {this.props.data.parc1}
                             </Text>
                         </View>
-                        <View style={styles.exam}>
+                        <View style={[styles.exam, {borderRightWidth: 0}]}>
                             <Text
                                 style={
                                     this.formatDate(this.props.data.parc2) < this.state.today
@@ -125,7 +125,7 @@ export default class SubjectDates extends Component {
                         MESAS JULIO/AGOSTO
                     </Text>
                     <View style={styles.exams}>
-                        <View style={styles.exam}>
+                        <View style={[styles.exam, {borderRightWidth: 0}]}>
                             <Text
                                 style={
                                     this.formatDate(this.props.data.jul1) < this.state.today
@@ -136,7 +136,7 @@ export default class SubjectDates extends Component {
                                 {this.props.data.jul1}
                             </Text>
                         </View>
-                        <View style={styles.exam}>
+                        <View style={[styles.exam, {borderRightWidth: 0}]}>
                             <Text
                                 style={
                                     this.formatDate(this.props.data.jul2) < this.state.today
@@ -165,7 +165,7 @@ export default class SubjectDates extends Component {
                         MESAS NOVIEMBRE/DICIEMBRE
                     </Text>
                     <View style={styles.exams}>
-                        <View style={styles.exam}>
+                        <View style={[styles.exam, {borderRightWidth: 0}]}>
                             <Text
                                 style={
                                     this.formatDate(this.props.data.dic1) < this.state.today
@@ -194,7 +194,7 @@ export default class SubjectDates extends Component {
                         MESAS FEBRERO/MARZO
                     </Text>
                     <View style={styles.exams}>
-                        <View style={styles.exam}>
+                        <View style={[styles.exam, {borderRightWidth: 0}]}>
                             <Text
                                 style={
                                     this.formatDate(this.props.data.mar1, true) < this.state.today
@@ -245,7 +245,7 @@ const styles = StyleSheet.create({
 
     // Contenedor de materia
     subjectBox: {
-        backgroundColor: 'rgba(253,246,249,0.8)',
+        backgroundColor: 'rgba(253,246,249,0.85)',
         flex: 1,
         flexDirection: 'row',
         marginBottom: 10,
@@ -253,7 +253,6 @@ const styles = StyleSheet.create({
         paddingVertical: 20,
         paddingHorizontal: 20,
         borderRadius: 10,
-        // overflow: 'hidden',
     },
 
     // Contenedor del texto
@@ -272,13 +271,13 @@ const styles = StyleSheet.create({
 
     // Subtitulos
     subtitleText: {
-        color: Colors.primary,
+        color: Colors.lighterPrimary,
         fontSize: 10,
         fontWeight: 'bold',
         textAlign: 'center',
         marginTop: 10,
         paddingVertical: 5,
-        backgroundColor: 'rgba(0,0,0,0.1)',
+        backgroundColor: Colors.primary,
         borderColor: Colors.primary,
         borderWidth: 1,
     },
@@ -292,14 +291,15 @@ const styles = StyleSheet.create({
     // Examen
     exam: {
         flexGrow: 1,
+        borderTopWidth: 0,
+        marginBottom: 5,
         borderColor: Colors.primary,
         borderWidth: 1,
-        marginBottom: 5,
     },
 
     // Texto de mesa vencida
     passedExamText: {
-        color: 'rgba(91,31,83,0.3)',
+        color: 'rgba(0,0,0,0.3)',
         textAlign: 'center',
         paddingVertical: 5,
     },
@@ -321,7 +321,7 @@ const styles = StyleSheet.create({
         marginLeft: 5,
         borderColor: 'rgba(91,31,83,1)',
         backgroundColor: 'rgba(91,31,83,0.1)',
-        borderWidth: 1,
+        borderWidth: 1.5,
         width: 155,
         height: 30,
         marginTop: 15,
