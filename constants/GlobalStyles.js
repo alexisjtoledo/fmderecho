@@ -9,15 +9,19 @@ export default StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: Colors.backgroundColor,
-        paddingTop: Platform.OS === 'ios' ? Constants.statusBarHeight : 0,
+        paddingTop: Constants.statusBarHeight,
         minWidth: Layout.window.width,
+    },
+
+    filler: {
+        minHeight: 50,
+        width: '100%',
     },
 
     // Contenedor de la pantalla principal
     mainScreenContainer: {
         flex: 1,
         marginLeft: 16,
-        paddingBottom: Platform.OS === 'ios' ? Constants.statusBarHeight : null,
     },
 
     // Contendor de la panatalla Enlaces Útiles

@@ -24,7 +24,7 @@ function App(props) {
     const [firstTime, setFirstTime] = useState(true)
 
     useEffect(() => {
-        checkFirstTime();
+        checkFirstTime()
         if(!firstTime) {
             checkForUpdates()
         }

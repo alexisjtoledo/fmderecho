@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { ScrollView, View, Alert } from 'react-native'
+import { ScrollView, View, Alert, Text } from 'react-native'
 import HomeScreenHeader from '../components/HomeScreenHeader'
 import WelcomeImage from '../components/WelcomeImage'
 import ImportantInformationStack from '../components/ImportantInformationStack'
@@ -63,6 +63,10 @@ export default function HomeScreen({ navigation }) {
                     name='Becas'
                     data={globalData.Scholarships}
                 />
+
+                <View style={GlobalStyles.filler}>
+                    <Text>&nbsp;</Text>
+                </View>
 
             </View>
         </ScrollView>
