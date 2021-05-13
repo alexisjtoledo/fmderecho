@@ -25,16 +25,16 @@ export default class Tag extends Component {
                 <Text style={styles.text}>
                     {
                         this.props.text === 'Educación' 
-                            ? <Ionicons name={ Platform.OS === 'ios' ? 'ios-school' : 'md-school' } size={8} />
+                            ? <Ionicons name='school' size={8} />
                             : this.props.text === 'Esparcimiento' 
-                                ? <Ionicons name={ Platform.OS === 'ios' ? 'ios-fitness' : 'md-fitness' } size={8} />
+                                ? <Ionicons name='fitness' size={8} />
                                 : this.props.text === 'Servicios' 
-                                    ? <Ionicons name={ Platform.OS === 'ios' ? 'ios-key' : 'md-key' } size={8} />
+                                    ? <Ionicons name='key' size={8} />
                                     : this.props.text === 'Moda' 
-                                        ? <Ionicons name={ Platform.OS === 'ios' ? 'ios-shirt' : 'md-shirt' } size={8} />
+                                        ? <Ionicons name='shirt' size={8} />
                                         : this.props.text === 'Gastronomía' 
-                                            ? <Ionicons name={ Platform.OS === 'ios' ? 'ios-pizza' : 'md-pizza' } size={8} />
-                                            : <Ionicons name={ Platform.OS === 'ios' ? 'ios-cart' : 'md-cart' } size={8} />
+                                            ? <Ionicons name='pizza' size={8} />
+                                            : <Ionicons name='cart' size={8} />
                     }
                     &nbsp;
                     {this.props.text}

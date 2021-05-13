@@ -79,11 +79,7 @@ export default class Procedure extends Component {
 
                     {/* Ícono Play */}
                     <Ionicons
-                        name={
-                            Platform.OS === 'ios'
-                                ? 'ios-play'
-                                : 'md-play'
-                        }
+                        name='play'
                         size={25}
                         color={Colors.textColor}
                     />
@@ -112,7 +108,7 @@ export default class Procedure extends Component {
                                 style={styles.modalBackButton} 
                             >
                                     <Ionicons 
-                                        name={'ios-arrow-back'} 
+                                        name='arrow-back'
                                         size={30} 
                                         color={Colors.secondary}
                                     />

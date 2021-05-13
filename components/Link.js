@@ -16,7 +16,7 @@ export default class Link extends Component {
                 style={styles.linkContainer}
                 onPress={() => this.props.handlePress(this.props.url)}>
                 <View style={styles.iconContainer}>
-                    <Ionicons name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} size={35} color={Colors.textColor} />
+                    <Ionicons name='link' size={35} color={Colors.textColor} />
                 </View>
                 <View style={styles.linkTextContainer}>
                     <Text style={styles.linkText}>

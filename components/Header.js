@@ -19,7 +19,7 @@ export default class Header extends Component {
                         >
                             {/* Ímagen del botón */}
                             <Ionicons
-                                name={'ios-arrow-back'}
+                                name='ios-arrow-back'
                                 size={30}
                                 color={Colors.secondary}
                             />

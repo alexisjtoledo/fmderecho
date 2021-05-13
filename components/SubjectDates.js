@@ -228,7 +228,7 @@ export default class SubjectDates extends Component {
                         </Text>
                         <View style={styles.iconBoxBtn}>
                             <Ionicons
-                                name={Platform.OS === 'ios' ? 'ios-git-network' : 'md-git-network'}
+                                name='git-network'
                                 size={16}
                                 color={Colors.lighterPrimary}
                             />

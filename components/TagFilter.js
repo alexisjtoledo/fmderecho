@@ -43,7 +43,7 @@ export default class TagFilter extends Component {
                     style={[styles.tagBtn, styles.iconBtn, styles.education]} 
                     onPress={() => this.filter('Educación')}
                 >
-                    <Text style={styles.tagText}><Ionicons name={ Platform.OS === 'ios' ? 'ios-school' : 'md-school' }/></Text>
+                    <Text style={styles.tagText}><Ionicons name='school' /></Text>
                 </TouchableOpacity>
 
                 {/* Botón Esparcimiento */}
@@ -51,7 +51,7 @@ export default class TagFilter extends Component {
                     style={[styles.tagBtn, styles.iconBtn, styles.leisure]} 
                     onPress={() => this.filter('Esparcimiento')}
                 >
-                    <Text style={styles.tagText}><Ionicons name={ Platform.OS === 'ios' ? 'ios-fitness' : 'md-fitness' }/></Text>
+                    <Text style={styles.tagText}><Ionicons name='fitness' /></Text>
                 </TouchableOpacity>
 
                 {/* Botón Servicios */}
@@ -59,7 +59,7 @@ export default class TagFilter extends Component {
                     style={[styles.tagBtn, styles.iconBtn, styles.services]} 
                     onPress={() => this.filter('Servicios')}
                 >
-                    <Text style={styles.tagText}><Ionicons name={ Platform.OS === 'ios' ? 'ios-key' : 'md-key' }/></Text>
+                    <Text style={styles.tagText}><Ionicons name='key' /></Text>
                 </TouchableOpacity>
 
                 {/* Botón Moda */}
@@ -67,7 +67,7 @@ export default class TagFilter extends Component {
                     style={[styles.tagBtn, styles.iconBtn, styles.fashion]} 
                     onPress={() => this.filter('Moda')}
                 >
-                    <Text style={styles.tagText}><Ionicons name={ Platform.OS === 'ios' ? 'ios-shirt' : 'md-shirt' }/></Text>
+                    <Text style={styles.tagText}><Ionicons name='shirt' /></Text>
                 </TouchableOpacity>
 
                 {/* Botón Gastronomía */}
@@ -75,7 +75,7 @@ export default class TagFilter extends Component {
                     style={[styles.tagBtn, styles.iconBtn, styles.gastronomy]} 
                     onPress={() => this.filter('Gastronomía')}
                 >
-                    <Text style={styles.tagText}><Ionicons name={ Platform.OS === 'ios' ? 'ios-pizza' : 'md-pizza' }/></Text>
+                    <Text style={styles.tagText}><Ionicons name='pizza' /></Text>
                 </TouchableOpacity>
 
                 {/* Botón Otros */}
@@ -83,7 +83,7 @@ export default class TagFilter extends Component {
                     style={[styles.tagBtn, styles.iconBtn, styles.other]} 
                     onPress={() => this.filter('Otros')}
                 >
-                    <Text style={styles.tagText}><Ionicons name={ Platform.OS === 'ios' ? 'ios-cart' : 'md-cart' }/></Text>
+                    <Text style={styles.tagText}><Ionicons name='cart' /></Text>
                 </TouchableOpacity>
             </View> //Fin de la barra
         ) // Fin del Return

@@ -917,8 +917,8 @@ export default class Abogacia extends Component {
                             >
                                 <Text style={styles.referenceLabel}>
                                     <Ionicons
-                                        name={Platform.OS === 'ios' ? 'ios-refresh' : 'md-refresh'}
-                                        size={20}
+                                        name='refresh'
+                                        size={14}
                                         color={Colors.textColor}
                                     />
                                 </Text>

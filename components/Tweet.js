@@ -83,7 +83,7 @@ export default class Tweet extends Component {
                                     Abrir enlace
                                     &nbsp;
                                     <Ionicons 
-                                        name={Platform.OS === 'ios' ? 'ios-open' : 'md-open'} 
+                                        name='open' 
                                         size={18} 
                                         color={Colors.textColor}
                                     />
@@ -96,7 +96,7 @@ export default class Tweet extends Component {
                     {/* TIMESTAMP */}
                     <Text style={styles.elementDate}>
                         <Ionicons 
-                            name={Platform.OS === 'ios' ? 'ios-time' : 'md-time'} 
+                            name='time' 
                             size={9.5}
                         />
                         &nbsp;

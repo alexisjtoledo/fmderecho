@@ -37,7 +37,7 @@ export default class Discount extends Component {
                         <Text style={styles.title}>{this.props.data.title}</Text>
                         <Text style={styles.remainingTime}>
                             <Ionicons 
-                                name={Platform.OS === 'ios' ? 'ios-clock' : 'md-clock'} 
+                                name='time' 
                                 size={10}
                             />
                             &nbsp;
@@ -46,7 +46,7 @@ export default class Discount extends Component {
                         <View style={styles.tagsContainer}>
                             <Text style={styles.tagsText}>
                                 <Ionicons 
-                                    name={Platform.OS === 'ios' ? 'ios-pricetags' : 'md-pricetags'} 
+                                    name='pricetags' 
                                     size={10}
                                 />&nbsp;
                             </Text>
@@ -63,11 +63,7 @@ export default class Discount extends Component {
 
                     {/* ÍCONO PLAY */}
                     <Ionicons
-                        name={
-                            Platform.OS === 'ios'
-                                ? 'ios-play'
-                                : 'md-play'
-                        }
+                        name='play'
                         size={25}
                         color={Colors.textColor}
                     />

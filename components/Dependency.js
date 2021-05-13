@@ -27,7 +27,7 @@ export default class Dependency extends Component {
                             <View style={styles.optionalDescription}>
                                 <View style={styles.iconBox}>
                                     <Ionicons
-                                        name={ Platform.OS === 'ios' ? 'ios-person' : 'md-person' }
+                                        name='person'
                                         size={15}
                                         color='#DDDDDD'
                                     />
@@ -46,7 +46,7 @@ export default class Dependency extends Component {
                             <View style={styles.optionalDescription}>
                                 <View style={styles.iconBox}>
                                     <Ionicons
-                                        name={ Platform.OS === 'ios' ? 'ios-pin' : 'md-pin' }
+                                        name='pin'
                                         size={15}
                                         color='#DDDDDD'
                                     />
@@ -68,7 +68,7 @@ export default class Dependency extends Component {
                                         </Text>
                                         <View style={styles.iconBoxBtn}>
                                             <Ionicons
-                                                name={ Platform.OS === 'ios' ? 'md-navigate' : 'md-navigate' }
+                                                name='navigate'
                                                 size={12}
                                                 color={Colors.textColor}
                                             />
@@ -87,7 +87,7 @@ export default class Dependency extends Component {
                             <View style={styles.optionalDescription}>
                                 <View style={styles.iconBox}>
                                     <Ionicons
-                                        name={ Platform.OS === 'ios' ? 'ios-time' : 'md-time' }
+                                        name='time'
                                         size={15}
                                         color='#DDDDDD'
                                     />
@@ -106,7 +106,7 @@ export default class Dependency extends Component {
                             <View style={styles.optionalDescription}>
                                 <View style={styles.iconBox}>
                                     <Ionicons
-                                        name={ Platform.OS === 'ios' ? 'ios-call' : 'md-call' }
+                                        name='call'
                                         size={15}
                                         color='#DDDDDD'
                                     />
@@ -126,7 +126,7 @@ export default class Dependency extends Component {
                                 </Text>
                                 <View style={styles.iconBoxBtn}>
                                     <Ionicons
-                                        name={ Platform.OS === 'ios' ? 'ios-call' : 'md-call' }
+                                        name='call'
                                         size={12}
                                         color={Colors.textColor}
                                     />
@@ -142,11 +142,7 @@ export default class Dependency extends Component {
                             <View style={styles.optionalDescription} >
                                 <View style={styles.iconBox}>
                                     <Ionicons
-                                        name={
-                                            Platform.OS === 'ios'
-                                                ? 'ios-mail'
-                                                : 'md-mail'
-                                        }
+                                        name='mail'
                                         size={15}
                                         color='#DDDDDD'
                                     />
@@ -166,12 +162,7 @@ export default class Dependency extends Component {
                                 </Text>
                                 <View style={styles.iconBoxBtn}>
                                     <Ionicons
-                                        name={
-                                            Platform.OS ===
-                                            'ios'
-                                                ? 'ios-send'
-                                                : 'md-send'
-                                        }
+                                        name='send'
                                         size={12}
                                         color={Colors.textColor}
                                     />

@@ -16,11 +16,7 @@ export default class Profesorado extends Component {
         return (
             <View style={styles.container}>
                     <Ionicons
-                        name={
-                            Platform.OS === 'ios'
-                                ? 'ios-hammer'
-                                : 'md-hammer'
-                        }
+                        name='hammer'
                         size={80}
                         color={Colors.textColor}
                     />

@@ -120,9 +120,7 @@ export default function CSEScreen({ navigation }) {
                         style={styles.mailBtn}
                     >
                         <Ionicons
-                            name={
-                                Platform.OS === 'ios' ? 'ios-mail' : 'md-mail'
-                            }
+                            name='mail'
                             size={30}
                             color={Colors.textColor}
                         />
@@ -134,9 +132,7 @@ export default function CSEScreen({ navigation }) {
                         style={styles.callBtn}
                     >
                         <Ionicons
-                            name={
-                                Platform.OS === 'ios' ? 'ios-call' : 'md-call'
-                            }
+                            name='call'
                             size={30}
                             color={Colors.textColor}
                         />
@@ -153,7 +149,7 @@ export default function CSEScreen({ navigation }) {
                             <View style={styles.contactDescription}>
                                 <View style={styles.iconBox}>
                                     <Ionicons
-                                        name={Platform.OS === 'ios' ? 'ios-pin' : 'md-pin'}
+                                        name='pin'
                                         size={15}
                                         color='#DDDDDD'
                                     />
@@ -165,7 +161,7 @@ export default function CSEScreen({ navigation }) {
                             <View style={styles.contactDescription}>
                                 <View style={styles.iconBox}>
                                     <Ionicons
-                                        name={Platform.OS === 'ios' ? 'ios-mail' : 'md-mail'}
+                                        name='mail'
                                         size={15}
                                         color='#DDDDDD'
                                     />
@@ -177,7 +173,7 @@ export default function CSEScreen({ navigation }) {
                             <View style={styles.contactDescription}>
                                 <View style={styles.iconBox}>
                                     <Ionicons
-                                        name={Platform.OS === 'ios' ? 'ios-call' : 'md-call'}
+                                        name='call'
                                         size={15}
                                         color='#DDDDDD'
                                     />

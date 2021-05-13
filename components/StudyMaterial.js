@@ -19,7 +19,7 @@ export default class StudyMaterial extends Component {
                 {/* Inicio Material de Estudio */}
                 <View style={styles.studyMaterialBox}>
                     <Ionicons 
-                        name={Platform.OS === 'ios' ? 'ios-cloud-download' : 'md-cloud-download'} 
+                        name='cloud-download'
                         size={50} 
                         color={Colors.textColor}
                     />

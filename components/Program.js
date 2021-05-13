@@ -17,7 +17,7 @@ export default class Program extends Component {
                 <View style={styles.programBox}>
 
                     <Ionicons 
-                        name={Platform.OS === 'ios' ? 'ios-cloud-download' : 'md-cloud-download'} 
+                        name='cloud-download'
                         size={50} 
                         color={Colors.textColor}
                     />

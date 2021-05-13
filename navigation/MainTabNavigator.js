@@ -55,7 +55,7 @@ const HomeStack = createStackNavigator(
 HomeStack.navigationOptions = {
   tabBarLabel: 'Inicio',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-home' : 'md-home'} />
+    <TabBarIcon focused={focused} name='home' />
   ),
 };
 
@@ -77,7 +77,7 @@ const ProceduresStack = createStackNavigator(
 ProceduresStack.navigationOptions = {
   tabBarLabel: 'Trámites',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-copy' : 'md-copy'} />
+    <TabBarIcon focused={focused} name='copy' />
   ),
 };
 
@@ -98,7 +98,7 @@ const ProgramsStack = createStackNavigator(
 ProgramsStack.navigationOptions = {
   tabBarLabel: 'Biblioteca',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-filing' : 'md-filing'} />
+    <TabBarIcon focused={focused} name='bookmarks' />
   ),
 };
 
@@ -121,7 +121,7 @@ const DiscountsStack = createStackNavigator(
 DiscountsStack.navigationOptions = {
   tabBarLabel: 'Descuentos',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-card' : 'md-card'} />
+    <TabBarIcon focused={focused} name='card' />
   ),
 };
 
@@ -143,7 +143,7 @@ const ContactStack = createStackNavigator(
 ContactStack.navigationOptions = {
   tabBarLabel: 'Consultas',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-chatbubbles' : 'md-chatboxes'} />
+    <TabBarIcon focused={focused} name='chatbubbles' />
   ),
 };
 

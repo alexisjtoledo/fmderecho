@@ -49,7 +49,7 @@ export default function StoriesScreen({ navigation }) {
 
                     {/* Imagen del botón */}
                     <Ionicons 
-                        name={'ios-arrow-back'} 
+                        name='chevron-back'
                         size={30} 
                         color={Colors.secondary} 
                     />
@@ -80,7 +80,7 @@ export default function StoriesScreen({ navigation }) {
                         style = {styles.openModalBtn}
                     >
                         <Ionicons 
-                            name={'ios-arrow-up'} 
+                            name={'chevron-up'} 
                             size={30} 
                             color={Colors.secondary} 
                         />
@@ -110,7 +110,7 @@ export default function StoriesScreen({ navigation }) {
                             style={styles.modalBackButton} 
                         >
                                 <Ionicons 
-                                    name={'ios-arrow-back'} 
+                                    name={'chevron-back'} 
                                     size={30} 
                                     color={Colors.secondary}
                                 />
@@ -154,7 +154,8 @@ const styles = StyleSheet.create({
         paddingVertical: 10,
         minHeight: 60,
         maxHeight: 60,
-        paddingHorizontal: 16,
+        paddingLeft: 9,
+        paddingRight: 16,
     },
 
     // Botón volver (pantalla principal)
@@ -194,6 +195,7 @@ const styles = StyleSheet.create({
         overflow: 'hidden',
         borderRadius: 50,
         marginRight: 10,
+        marginLeft: 5,
     },
 
     // Imagen de la cabecera (pantalla principal)

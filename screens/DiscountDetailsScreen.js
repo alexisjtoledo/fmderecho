@@ -84,7 +84,7 @@ export default function DiscountDetailsScreen({ navigation }) {
                 <View style={styles.backBtnContainer}>
                     <TouchableOpacity style={styles.backBtn} onPress={() => navigation.goBack()}>
                         <Ionicons
-                            name={'md-arrow-round-back'}
+                            name='arrow-back'
                             size={30}
                             color={Colors.textColor}
                         />
@@ -121,7 +121,7 @@ export default function DiscountDetailsScreen({ navigation }) {
                 <TouchableOpacity style={styles.button} onPress={() => {Share.share({message: sharedMessage});}}>
                     <View style={[styles.iconBtnBox, styles.shareIconBox]}>
                     <Ionicons 
-                        name={Platform.OS === 'ios' ? 'ios-share' : 'md-share'} 
+                        name='share'
                         size={Layout.window.width > 400 ? 30 : 25}
                         color={Colors.textColor}
                     />
@@ -138,7 +138,7 @@ export default function DiscountDetailsScreen({ navigation }) {
                 >
                     <View style={[styles.iconBtnBox, styles.actionIconBox]}>
                     <Ionicons 
-                        name={Platform.OS === 'ios' ? 'ios-checkmark-circle-outline' : 'md-checkmark-circle-outline'} 
+                        name='checkmark' 
                         size={Layout.window.width > 400 ? 30 : 25}
                         color={Colors.textColor}
                     />
