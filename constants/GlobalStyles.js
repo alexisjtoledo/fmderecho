@@ -63,6 +63,4 @@ export default StyleSheet.create({
         paddingBottom: Constants.statusBarHeight + 10,
     },
 
-
-
-});
+})

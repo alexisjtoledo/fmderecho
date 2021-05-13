@@ -5,7 +5,7 @@
 # FMDERECHO APP
 ### [English: Go to development details](#development-details)
 
-![Image](https://fmderecho.com/mobile/img/main-readme-img.png)
+![Image](https://neon-dryad-755.web.app/img/main-readme-img.png)
 
 Descargate nuestra App para acceder a todos los beneficios de tener el Centro de Estudiantes en la palma de tu mano
 
@@ -66,10 +66,8 @@ The application front-end design is inspired on Netflix and Instagram user inter
 
 All of the data consumed by this application are produced and maintained by Alexis Toledo and Franja Morada Derecho Córdoba and are accessible from Franja Morada's public API for free.
 
-You are free to use all of the information from our API just fetching it from our public address:
-
 ```
-https://fmderecho.com/mobile/api/data.json
+You are free to use all of the information from our API just fetching it from our public address. Just ask me for it :)
 ```
 
 Although all of our efforts to maintain this data set reliable and updated, we have to clarify that neither Franja Morada nor Alexis Toledo is responsible for the veracity of that information because the data is taken from different data sources provided directly by the university and the law school. Use it at your own risk.

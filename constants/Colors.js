@@ -1,16 +1,16 @@
-const backgroundColor = "#21201E";
-const darkerBackground = "#171717";
-const lighterBackground = "#717171";
+const backgroundColor = "#21201E"
+const darkerBackground = "#171717"
+const lighterBackground = "#717171"
 
-const textColor = "#FFFFFF";
-const secondaryTextColor = "#717171";
+const textColor = "#FFFFFF"
+const secondaryTextColor = "#717171"
 
-const black = "#000000";
-const tintColor = "#FFFFFF";
+const black = "#000000"
+const tintColor = "#FFFFFF"
 
-const primary = "#5B1F53";
-const lighterPrimary = "#FDF6F9";
-const secondary = "#C3FFFB";
+const primary = "#5B1F53"
+const lighterPrimary = "#FDF6F9"
+const secondary = "#C3FFFB"
 
 export default {
     backgroundColor,
@@ -36,4 +36,4 @@ export default {
     warningText: "#666804",
     noticeBackground: textColor,
     noticeText: textColor,
-};
+}

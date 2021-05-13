@@ -11,13 +11,14 @@ import StudyMaterial from '../components/StudyMaterial'
 import SearchInput from '../components/SearchInput'
 import Discount from '../components/Discount'
 import TagFilter from '../components/TagFilter'
+import { apiUrl } from '../constants/ApiKeys'
 
 export default class DiscountsScreen extends Component {
 
     constructor(props){
         super(props);
         this.state = {
-            url: 'http://fmderecho.com/mobile/api/data.json', // URL de la API
+            url: apiUrl, // URL de la API
             loading: false, // Estado de descarga
             elements: [], // Datos que vengan de la API
             inMemoryElements: [], // Datos que vengan de la API (persistentes)

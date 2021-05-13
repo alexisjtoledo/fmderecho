@@ -5,7 +5,6 @@
     "description": "Aplicación de la Franja Morada Derecho de la UNC. Accedé a toda la información de la Facultad y el Centro de Estudiantes a cualquier hora y desde cualquier lugar.",
     "privacy": "public",
     "owner": "alexistoledo",
-    "sdkVersion": "36.0.0",
     "platforms": [
       "ios",
       "android"
@@ -20,7 +19,7 @@
     "notification": {
       "icon": "./assets/images/notification_icon.png"
     },
-    "androidStatusBar":{
+    "androidStatusBar": {
       "barStyle": "light-content",
       "backgroundColor": "#21201E",
       "hidden": false,

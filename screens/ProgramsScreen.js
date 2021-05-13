@@ -10,13 +10,14 @@ import GlobalStyles from '../constants/GlobalStyles'
 import Header from '../components/Header'
 import Program from '../components/Program'
 import SearchInput from '../components/SearchInput'
+import { apiUrl } from '../constants/ApiKeys'
 
 export default class ProgramsScreen extends Component {
 
     constructor(props){
         super(props);
         this.state = {
-            url: 'http://fmderecho.com/mobile/api/data.json', // URL de la API
+            url: apiUrl, // URL de la API
             loading: false, // Estado de descarga
             elements: [], // Datos que vengan de la API
             inMemoryElements: [], // Datos que vengan de la API (persistentes)

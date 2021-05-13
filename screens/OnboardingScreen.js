@@ -1,11 +1,9 @@
 import React, { Component } from 'react'
-import { View, Text, Image, StatusBar, StyleSheet } from 'react-native'
+import { View, Text, Image, StatusBar, StyleSheet, AsyncStorage } from 'react-native'
 import AppIntroSlider from 'react-native-app-intro-slider'
 import AppNavigator from '../navigation/AppNavigator'
-import { Ionicons } from '@expo/vector-icons'
 import Layout from '../constants/Layout'
 import Colors from '../constants/Colors'
-import AsyncStorage from '@react-native-community/async-storage'
 import * as Updates from 'expo-updates'
 
 /**

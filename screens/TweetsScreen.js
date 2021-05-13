@@ -3,6 +3,7 @@ import { View, FlatList, Linking, Alert } from 'react-native'
 import Header from '../components/Header'
 import Tweet from '../components/Tweet'
 import GlobalStyles from '../constants/GlobalStyles'
+import { Information, Academics, Inclusion, Rights } from '../constants/ApiKeys'
 
 export default function TweetsScreen({ navigation }) {
 
@@ -16,16 +17,16 @@ export default function TweetsScreen({ navigation }) {
         let url;
         switch (selector) {
             case 'Information':
-                url = 'http://fmderecho.com/mobile/api/getfromtwitter/information.php';
+                url = Information;
                 break;
             case 'Academics':
-                url = 'http://fmderecho.com/mobile/api/getfromtwitter/academics.php';
+                url = Academics;
                 break;
             case 'Inclusion':
-                url = 'http://fmderecho.com/mobile/api/getfromtwitter/inclusion.php';
+                url = Inclusion;
                 break;
             case 'Rights':
-                url = 'http://fmderecho.com/mobile/api/getfromtwitter/rights.php';
+                url = Rights;
                 break;
             default: null;
         }

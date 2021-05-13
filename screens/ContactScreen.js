@@ -5,6 +5,7 @@ import { WebView } from 'react-native-webview'
 import Header from '../components/Header'
 import GlobalStyles from '../constants/GlobalStyles'
 import Colors from '../constants/Colors'
+import { formUrl } from '../constants/ApiKeys'
 
 export default function ContactScreen() {
     return (
@@ -17,7 +18,7 @@ export default function ContactScreen() {
 
             {/* FORMULARIO */}
             <WebView style={GlobalStyles.frame}
-                source={{uri: 'https://fmderecho.com/mobile/contacto/form.html'}}
+                source={{uri: formUrl}}
                 bounces={false}
                 renderLoading={<ActivityIndicator size='large' color={Colors.secondary} />}
             />
