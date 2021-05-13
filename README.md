@@ -11,7 +11,7 @@ Descargate nuestra App para acceder a todos los beneficios de tener el Centro de
 
 Nuestra aplicación está pensada para que tengas acceso a toda la información relacionada a la facu en el momento que lo necesites.
 
-[![Youtube Video](https://fmderecho.com/mobile/img/video-preview.png)](https://www.youtube.com/watch?v=PaNxM35Pgm8)
+[![Youtube Video](https://neon-dryad-755.web.app/img/video-preview.png)](https://www.youtube.com/watch?v=PaNxM35Pgm8)
 
 Algunas de las funcionalidades son:
 [English: Main functionalities](#main-functionalities)
