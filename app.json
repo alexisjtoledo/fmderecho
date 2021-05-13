@@ -2,6 +2,7 @@
   "expo": {
     "name": "fmderecho",
     "slug": "fmderecho",
+    "sdkVersion": "41.0.0",
     "description": "Aplicación de la Franja Morada Derecho de la UNC. Accedé a toda la información de la Facultad y el Centro de Estudiantes a cualquier hora y desde cualquier lugar.",
     "privacy": "public",
     "owner": "alexistoledo",
